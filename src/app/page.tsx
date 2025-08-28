@@ -2,6 +2,13 @@ import { Header } from "@/components/layout/header"
 import { HeroSection } from "@/components/layout/hero-section"
 import { LandingPreview } from "@/components/layout/landing-preview"
 import { Suspense } from "react"
+import { HowItWorksSection } from "@/components/layout/how-it-works-section"
+import { FeaturedCollectionsSection } from "@/components/layout/featured-collections-section"
+import { CategoriesSection } from "@/components/layout/categories-section"
+import { RecentActivitySection } from "@/components/layout/recent-activity-section"
+import { StatisticsSection } from "@/components/layout/statistics-section"
+import { FAQSection } from "@/components/layout/faq-section"
+import { Footer } from "@/components/layout/footer"
 
 export default function HomePage() {
   return (
@@ -27,6 +34,13 @@ export default function HomePage() {
             }
           >
             <LandingPreview />
+            <HowItWorksSection />
+            <FeaturedCollectionsSection />
+            <CategoriesSection />
+            <RecentActivitySection />
+            <StatisticsSection />
+            <FAQSection />
+            <Footer />
           </Suspense>
         </section>
       </main>

@@ -101,29 +101,6 @@ export function LandingPreview() {
           </div>
         ))}
       </div>
-
-      {/* Call to Action */}
-      <div className="text-center space-y-4 pt-6 border-t">
-        <div className="space-y-2">
-          <p className="text-lg font-medium">Want to see more trending tools?</p>
-          <p className="text-muted-foreground">
-            Join DevHunt to access the full catalog, vote on your favorites, and engage with the developer community.
-          </p>
-        </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <Button asChild size="lg">
-            <Link href="/register">
-              Join DevHunt - It's Free!
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-          <Button asChild variant="outline" size="lg">
-            <Link href="/login">
-              Already have an account?
-            </Link>
-          </Button>
-        </div>
-      </div>
     </div>
   )
 }
