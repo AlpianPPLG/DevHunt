@@ -81,6 +81,14 @@ export function MediaGallery({
     }
   }
 
+  // Generate proxy URL for external images
+  const getProxyUrl = (url: string) => {
+    if (!url || url.startsWith('/') || url.startsWith('data:')) {
+      return url
+    }
+    return `/api/images/proxy?url=${encodeURIComponent(url)}`
+  }
+
   const renderMedia = (item: MediaItem, isMain = false) => {
     const mediaClass = cn(
       "w-full object-cover rounded-lg",
@@ -91,8 +99,8 @@ export function MediaGallery({
       return (
         <div className="relative">
           <video 
-            src={item.media_url}
-            poster={item.thumbnail_url}
+            src={getProxyUrl(item.media_url)}
+            poster={item.thumbnail_url ? getProxyUrl(item.thumbnail_url) : undefined}
             className={mediaClass}
             controls={isMain}
             muted
@@ -108,12 +116,21 @@ export function MediaGallery({
     }
 
     return (
-      <img
-        src={item.media_url}
-        alt={item.alt_text || item.caption || "Product media"}
-        className={mediaClass}
-        loading="lazy"
-      />
+      <div className="relative">
+        <img
+          src={getProxyUrl(item.media_url)}
+          alt={item.alt_text || item.caption || "Product media"}
+          className={mediaClass}
+          loading="lazy"
+          crossOrigin="anonymous"
+        />
+        {/* Show external link indicator for external images */}
+        {!item.media_url.startsWith('/') && !item.media_url.startsWith('data:') && (
+          <div className="absolute top-2 right-2 bg-black/50 rounded-full p-1">
+            <ExternalLink className="h-3 w-3 text-white" />
+          </div>
+        )}
+      </div>
     )
   }
 
@@ -150,68 +167,56 @@ export function MediaGallery({
   return (
     <div className={cn("space-y-4", className)}>
       {/* Main Media Display */}
-      <div className="relative group">
+      <div className="relative">
         <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
           <DialogTrigger asChild>
-            <div className="cursor-pointer relative">
+            <div className="cursor-pointer">
               {renderMedia(currentMedia, true)}
-              
-              {/* Media Type Badge */}
-              {currentMedia.media_type !== "image" && (
-                <Badge 
-                  variant="secondary" 
-                  className="absolute top-2 left-2 bg-black/50 text-white border-0"
+            </div>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
+            <div className="relative">
+              {renderMedia(currentMedia, true)}
+              <div className="absolute top-4 right-4">
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  onClick={() => setIsModalOpen(false)}
+                  className="bg-black/50 text-white hover:bg-black/70"
                 >
-                  {getMediaTypeIcon(currentMedia.media_type)}
-                  <span className="ml-1 capitalize">{currentMedia.media_type}</span>
-                </Badge>
-              )}
-
-              {/* Expand Icon */}
-              <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Button size="sm" variant="secondary" className="bg-black/50 border-0">
-                  <ExternalLink className="h-4 w-4 text-white" />
+                  <X className="h-4 w-4" />
                 </Button>
               </div>
             </div>
-          </DialogTrigger>
-          
-          <DialogContent className="max-w-4xl max-h-[90vh] p-0">
-            <div className="relative">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute top-2 right-2 z-10 bg-black/50 text-white hover:bg-black/70"
-                onClick={() => setIsModalOpen(false)}
-              >
-                <X className="h-4 w-4" />
-              </Button>
-              {renderMedia(currentMedia, true)}
-              {currentMedia.caption && (
-                <div className="p-4 bg-background">
-                  <p className="text-sm text-muted-foreground">{currentMedia.caption}</p>
-                </div>
-              )}
-            </div>
           </DialogContent>
         </Dialog>
+
+        {/* Media Type Badge */}
+        {currentMedia.media_type !== "image" && (
+          <div className="absolute top-4 left-4">
+            <Badge variant="secondary" className="bg-black/50 text-white">
+              {getMediaTypeIcon(currentMedia.media_type)}
+              {currentMedia.media_type.toUpperCase()}
+            </Badge>
+          </div>
+        )}
 
         {/* Navigation Controls */}
         {showControls && media.length > 1 && (
           <>
             <Button
-              variant="ghost"
-              size="sm"
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white hover:bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity"
+              variant="secondary"
+              size="icon"
               onClick={prevMedia}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white hover:bg-black/70"
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
             <Button
-              variant="ghost"
-              size="sm"
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white hover:bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity"
+              variant="secondary"
+              size="icon"
               onClick={nextMedia}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white hover:bg-black/70"
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
@@ -219,46 +224,29 @@ export function MediaGallery({
         )}
       </div>
 
-      {/* Caption */}
-      {currentMedia.caption && (
-        <p className="text-sm text-muted-foreground">{currentMedia.caption}</p>
-      )}
-
       {/* Thumbnail Navigation */}
       {media.length > 1 && (
         <div className="flex gap-2 overflow-x-auto pb-2">
           {media.map((item, index) => (
-            <button
+            <div
               key={item.id}
-              onClick={() => setCurrentIndex(index)}
               className={cn(
-                "flex-shrink-0 relative rounded-lg overflow-hidden border-2 transition-all",
-                index === currentIndex 
-                  ? "border-primary" 
-                  : "border-transparent hover:border-muted-foreground/50"
+                "cursor-pointer transition-all duration-200",
+                index === currentIndex ? "ring-2 ring-primary" : "opacity-70 hover:opacity-100"
               )}
+              onClick={() => setCurrentIndex(index)}
             >
-              {renderMedia(item)}
-              
-              {/* Media Type Indicator */}
-              {item.media_type !== "image" && (
-                <div className="absolute bottom-1 right-1">
-                  <div className="bg-black/60 rounded px-1 py-0.5 text-white text-xs">
-                    {getMediaTypeIcon(item.media_type)}
-                  </div>
-                </div>
-              )}
-            </button>
+              {renderMedia(item, false)}
+            </div>
           ))}
         </div>
       )}
 
-      {/* Media Count */}
-      {media.length > 1 && (
-        <div className="text-center">
-          <span className="text-xs text-muted-foreground">
-            {currentIndex + 1} of {media.length}
-          </span>
+      {/* Media Info */}
+      {(currentMedia.caption || currentMedia.alt_text) && (
+        <div className="text-sm text-muted-foreground">
+          {currentMedia.caption && <p className="font-medium">{currentMedia.caption}</p>}
+          {currentMedia.alt_text && <p className="text-xs">{currentMedia.alt_text}</p>}
         </div>
       )}
     </div>

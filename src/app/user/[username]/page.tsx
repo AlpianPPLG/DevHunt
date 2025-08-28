@@ -4,7 +4,7 @@ import { ProductCard } from "@/components/product/product-card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Calendar, Package, MessageCircle, TrendingUp } from "lucide-react"
+import { Calendar, Package, MessageCircle, TrendingUp, BarChart3 } from "lucide-react"
 import { formatDistanceToNow } from "date-fns"
 import Link from "next/link"
 
@@ -111,9 +111,10 @@ export default async function UserPage({ params }: UserPageProps) {
 
           {/* Content Tabs */}
           <Tabs defaultValue="products" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
+            <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="products">Submitted Products ({stats.productsCount})</TabsTrigger>
               <TabsTrigger value="comments">Recent Comments ({stats.commentsCount})</TabsTrigger>
+              <TabsTrigger value="analytics">Analytics</TabsTrigger>
             </TabsList>
 
             <TabsContent value="products" className="space-y-4 mt-6">
@@ -174,6 +175,23 @@ export default async function UserPage({ params }: UserPageProps) {
                   <p className="text-sm text-muted-foreground mt-2">{user.username} hasn't made any comments yet.</p>
                 </div>
               )}
+            </TabsContent>
+
+            <TabsContent value="analytics" className="space-y-4 mt-6">
+              <div className="text-center py-12">
+                <BarChart3 className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-muted-foreground">Analytics Dashboard</h3>
+                <p className="text-sm text-muted-foreground mt-2 mb-4">
+                  View detailed analytics and performance metrics for {user.username}'s content.
+                </p>
+                <Link
+                  href={`/analytics`}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+                >
+                  <BarChart3 className="h-4 w-4" />
+                  View Full Analytics
+                </Link>
+              </div>
             </TabsContent>
           </Tabs>
         </div>

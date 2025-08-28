@@ -13,7 +13,9 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Loader2, Plus, X, Check, ChevronsUpDown } from "lucide-react"
+import { Loader2, Plus, X, Check, ChevronsUpDown, Info } from "lucide-react"
+import { getUrlHelpMessage, isDirectImageUrl, extractDomain } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 
 interface Tag {
   id: number
@@ -37,6 +39,8 @@ export function SubmitForm() {
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [isTagsOpen, setIsTagsOpen] = useState(false)
+  const [thumbnailPreview, setThumbnailPreview] = useState<string | null>(null)
+  const [thumbnailHelpMessage, setThumbnailHelpMessage] = useState<string>("")
   const router = useRouter()
 
   useEffect(() => {
@@ -56,11 +60,33 @@ export function SubmitForm() {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }))
+
+    // Generate thumbnail preview and help message
+    if (name === "thumbnail_url" && value) {
+      try {
+        new URL(value)
+        setThumbnailPreview(value)
+        setThumbnailHelpMessage(getUrlHelpMessage(value))
+      } catch {
+        setThumbnailPreview(null)
+        setThumbnailHelpMessage("❌ Invalid URL format. Please enter a valid URL.")
+      }
+    } else if (name === "thumbnail_url") {
+      setThumbnailPreview(null)
+      setThumbnailHelpMessage("")
+    }
   }
+
+  // Check if this is a Pinterest page URL that needs conversion
+  const isPinterestPageUrl = formData.thumbnail_url && (
+    formData.thumbnail_url.includes('pin.it/') || 
+    (formData.thumbnail_url.includes('pinterest.com') && !formData.thumbnail_url.includes('i.pinimg.com'))
+  )
 
   const handleTagSelect = (tagName: string) => {
     if (!selectedTags.includes(tagName) && selectedTags.length < 5) {
@@ -220,6 +246,84 @@ export function SubmitForm() {
               disabled={isLoading}
             />
             <p className="text-sm text-muted-foreground">Optional: URL to product logo or screenshot</p>
+            
+            {/* Pinterest Warning for Page URLs */}
+            {isPinterestPageUrl && (
+              <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-md">
+                <div className="flex items-center gap-2 mb-2">
+                  <Info className="h-4 w-4 text-yellow-600" />
+                  <span className="font-medium text-yellow-800">⚠️ Pinterest Page URL Detected</span>
+                </div>
+                <p className="text-sm text-yellow-700 mb-2">
+                  You've entered a Pinterest page link, but we need the direct image URL.
+                </p>
+                <div className="text-xs text-yellow-600">
+                  <strong>How to get the direct image URL:</strong>
+                  <ol className="list-decimal list-inside mt-1 space-y-1">
+                    <li>Go to the Pinterest page: <a href={formData.thumbnail_url} target="_blank" rel="noopener noreferrer" className="underline hover:text-yellow-800">{formData.thumbnail_url}</a></li>
+                    <li>Right-click on the image you want to use</li>
+                    <li>Select "Copy image address" or "Copy image URL"</li>
+                    <li>Paste the copied URL here</li>
+                  </ol>
+                </div>
+                <div className="mt-2 p-2 bg-yellow-100 rounded text-xs">
+                  <strong>Example:</strong> Instead of <code className="bg-yellow-200 px-1 rounded">{formData.thumbnail_url}</code>, 
+                  use <code className="bg-yellow-200 px-1 rounded">https://i.pinimg.com/originals/actual-image.jpg</code>
+                </div>
+              </div>
+            )}
+            
+            {/* URL Help Message */}
+            {thumbnailHelpMessage && !isPinterestPageUrl && (
+              <div className={cn(
+                "p-3 rounded-md text-sm border",
+                thumbnailHelpMessage.includes("✅") 
+                  ? "bg-green-50 border-green-200 text-green-800" 
+                  : thumbnailHelpMessage.includes("⚠️") 
+                  ? "bg-yellow-50 border-yellow-200 text-yellow-800"
+                  : "bg-red-50 border-red-200 text-red-800"
+              )}>
+                {thumbnailHelpMessage}
+                
+                {/* Pinterest specific help */}
+                {thumbnailHelpMessage.includes("Pinterest") && (
+                  <div className="mt-2 p-2 bg-blue-50 border border-blue-200 rounded text-xs text-blue-800">
+                    <p className="font-medium">How to get direct Pinterest image URL:</p>
+                    <ol className="list-decimal list-inside mt-1 space-y-1">
+                      <li>Go to the Pinterest pin page</li>
+                      <li>Right-click on the image</li>
+                      <li>Select "Copy image address" or "Copy image URL"</li>
+                      <li>Paste the copied URL here</li>
+                    </ol>
+                    <p className="mt-2 text-blue-700">
+                      <strong>Example:</strong> Instead of <code>https://pin.it/3FjHo9YqN</code>, 
+                      use <code>https://i.pinimg.com/originals/actual-image.jpg</code>
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+            
+            {/* Thumbnail Preview */}
+            {thumbnailPreview && !isPinterestPageUrl && (
+              <div className="mt-3">
+                <Label className="text-sm font-medium">Preview:</Label>
+                <div className="mt-2 w-24 h-24 border rounded-lg overflow-hidden">
+                  <img
+                    src={thumbnailPreview.startsWith('/') || thumbnailPreview.startsWith('data:') 
+                      ? thumbnailPreview 
+                      : `/api/images/proxy?url=${encodeURIComponent(thumbnailPreview)}`
+                    }
+                    alt="Thumbnail preview"
+                    className="w-full h-full object-cover"
+                    crossOrigin="anonymous"
+                  />
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Source: {extractDomain(thumbnailPreview)}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="space-y-2">

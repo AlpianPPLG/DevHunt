@@ -16,18 +16,15 @@ interface ProductPageProps {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params
-
-  // Fetch product details
+  
   const product = await queryRow(
     `SELECT 
-      p.id, p.name, p.tagline, p.description, p.website_url, p.thumbnail_url, p.created_at,
-      u.name as submitter_name, u.username as submitter_username, u.avatar_url as submitter_avatar,
-      COUNT(v.user_id) as vote_count
+      p.id, p.name, p.tagline, p.description, p.website_url, 
+      p.thumbnail_url, p.github_url, p.demo_url, p.created_at,
+      u.name as submitter_name, u.username as submitter_username
      FROM products p
-     LEFT JOIN users u ON p.submitter_id = u.id
-     LEFT JOIN votes v ON p.id = v.product_id
-     WHERE p.id = ?
-     GROUP BY p.id`,
+     JOIN users u ON p.submitter_id = u.id
+     WHERE p.id = ?`,
     [id],
   )
 
@@ -35,12 +32,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound()
   }
 
-  // Fetch product tags
   const tags = await queryRows(
-    `SELECT t.id, t.name 
-     FROM tags t 
-     JOIN product_tags pt ON t.id = pt.tag_id 
-     WHERE pt.product_id = ?`,
+    `SELECT t.name 
+     FROM tags t
+     JOIN product_tags pt ON t.id = pt.tag_id
+     WHERE pt.product_id = ?
+     ORDER BY t.name`,
     [id],
   )
 
@@ -54,9 +51,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="w-24 h-24 rounded-xl bg-muted flex items-center justify-center overflow-hidden flex-shrink-0">
               {product.thumbnail_url ? (
                 <img
-                  src={product.thumbnail_url || "/placeholder.svg"}
+                  src={product.thumbnail_url.startsWith('/') || product.thumbnail_url.startsWith('data:') 
+                    ? product.thumbnail_url 
+                    : `/api/images/proxy?url=${encodeURIComponent(product.thumbnail_url)}`
+                  }
                   alt={product.name}
                   className="w-full h-full object-cover"
+                  crossOrigin="anonymous"
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">

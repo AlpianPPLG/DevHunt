@@ -114,6 +114,11 @@ async function trackClick(request: Request, body: any) {
   const validatedData = TrackClickSchema.parse(body)
   const user = await getCurrentUser()
 
+  // Get client IP and user agent
+  const forwarded = request.headers.get("x-forwarded-for")
+  const ip = forwarded ? forwarded.split(",")[0] : "127.0.0.1"
+  const userAgent = request.headers.get("user-agent") || ""
+
   // Check if product exists
   const product = await queryRow(
     "SELECT id FROM products WHERE id = ?",
@@ -132,18 +137,18 @@ async function trackClick(request: Request, body: any) {
   
   await executeQuery(
     `INSERT INTO product_clicks 
-     (id, product_id, user_id, click_type, target_url)
-     VALUES (?, ?, ?, ?, ?)`,
+     (id, product_id, user_id, click_type, target_url, ip_address, user_agent)
+     VALUES (?, ?, ?, ?, ?, ?, ?)`,
     [
       clickId,
       validatedData.product_id,
       user?.id || null,
       validatedData.click_type,
-      validatedData.target_url || null
+      validatedData.target_url || null,
+      ip,
+      userAgent
     ]
   )
-
-  // Note: click_count column doesn't exist, so we don't update it
 
   return NextResponse.json({ success: true })
 }

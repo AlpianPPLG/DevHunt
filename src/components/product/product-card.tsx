@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import { useState } from "react"
 
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
@@ -49,33 +50,27 @@ export function ProductCard({
   isVoting = false,
   currentVoteCount,
 }: ProductCardProps) {
-  const handleVote = async (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
+  const [isVotingLocal, setIsVotingLocal] = useState(false)
+  const [localVoteCount, setLocalVoteCount] = useState(currentVoteCount || 0)
 
-    if (onVote && !isVoting) {
-      await onVote(product.id, isVoted)
+  const handleVote = async () => {
+    if (isVoting || isVotingLocal) return
+
+    setIsVotingLocal(true)
+    try {
+      await onVote?.(product.id, !isVoted)
+      setLocalVoteCount(prev => isVoted ? prev - 1 : prev + 1)
+    } finally {
+      setIsVotingLocal(false)
     }
   }
 
-  // Use current vote count if provided, otherwise fall back to original
-  const displayVoteCount = currentVoteCount !== undefined ? currentVoteCount : product.vote_count
-  
-  // Determine if product is trending based on recent activity
-  const indicators = product.trending_indicators
-  const isTrending = indicators && (
-    indicators.recent_votes_24h >= 3 || 
-    indicators.recent_comments_24h >= 2 ||
-    indicators.trending_score >= 15
-  )
-  const isHot = indicators && (
-    indicators.recent_votes_24h >= 5 || 
-    indicators.trending_score >= 25
-  )
+  const isHot = localVoteCount >= 100
+  const isTrending = localVoteCount >= 50
 
   return (
-    <Card className="group hover:shadow-md transition-shadow duration-200">
-      <CardContent className="p-6">
+    <Card className="group hover:shadow-lg transition-all duration-200">
+      <CardContent className="p-4">
         <div className="flex gap-4">
           {/* Vote Button */}
           <div className="flex flex-col items-center gap-1 min-w-[60px]">
@@ -93,7 +88,7 @@ export function ProductCard({
               ) : (
                 <>
                   <ChevronUp className="h-4 w-4" />
-                  <span className="text-xs font-medium">{displayVoteCount}</span>
+                  <span className="text-xs font-medium">{localVoteCount}</span>
                 </>
               )}
             </Button>
