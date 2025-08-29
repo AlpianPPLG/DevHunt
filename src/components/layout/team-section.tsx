@@ -12,7 +12,6 @@ import {
   Users,
   Zap
 } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { 
   Card, 
@@ -23,10 +22,10 @@ import {
   CardTitle 
 } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { ImageWithFallback } from "@/components/ui/image-with-fallback"
+import ClientOnly from "@/components/client-only"
 
 interface TeamMember {
   id: string
@@ -159,11 +158,11 @@ export function TeamSection() {
 
   // Department labels and icons
   const departments = [
-    { id: "all", label: "All Team", icon: <Users className="h-4 w-4" /> },
-    { id: "leadership", label: "Leadership", icon: <Briefcase className="h-4 w-4" /> },
-    { id: "engineering", label: "Engineering", icon: <Code className="h-4 w-4" /> },
-    { id: "design", label: "Design", icon: <Zap className="h-4 w-4" /> },
-    { id: "product", label: "Product", icon: <Globe className="h-4 w-4" /> }
+    { id: "all", label: "All Team", icon: <ClientOnly><Users className="h-4 w-4" /></ClientOnly> },
+    { id: "leadership", label: "Leadership", icon: <ClientOnly><Briefcase className="h-4 w-4" /></ClientOnly> },
+    { id: "engineering", label: "Engineering", icon: <ClientOnly><Code className="h-4 w-4" /></ClientOnly> },
+    { id: "design", label: "Design", icon: <ClientOnly><Zap className="h-4 w-4" /></ClientOnly> },
+    { id: "product", label: "Product", icon: <ClientOnly><Globe className="h-4 w-4" /></ClientOnly> }
   ]
 
   return (
@@ -179,7 +178,7 @@ export function TeamSection() {
         {/* Team Directory */}
         <Tabs defaultValue="all" className="mb-12">
           <div className="flex justify-center mb-8">
-            <TabsList>
+            <TabsList suppressHydrationWarning>
               {departments.map((dept) => (
                 <TabsTrigger key={dept.id} value={dept.id} className="flex items-center gap-1.5">
                   {dept.icon}
@@ -260,7 +259,9 @@ export function TeamSection() {
             <Card>
               <CardHeader className="pb-3">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                  <Users className="h-6 w-6 text-primary" />
+                  <ClientOnly>
+                    <Users className="h-6 w-6 text-primary" />
+                  </ClientOnly>
                 </div>
                 <CardTitle>Community First</CardTitle>
               </CardHeader>
@@ -274,13 +275,15 @@ export function TeamSection() {
             <Card>
               <CardHeader className="pb-3">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                  <Zap className="h-6 w-6 text-primary" />
+                  <ClientOnly>
+                    <Zap className="h-6 w-6 text-primary" />
+                  </ClientOnly>
                 </div>
                 <CardTitle>Innovation</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  We constantly push the boundaries of what's possible, creating new ways for developers to discover and connect with tools.
+                  We constantly push the boundaries of whats possible, creating new ways for developers to discover and connect with tools.
                 </p>
               </CardContent>
             </Card>
@@ -288,7 +291,9 @@ export function TeamSection() {
             <Card>
               <CardHeader className="pb-3">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                  <Code className="h-6 w-6 text-primary" />
+                  <ClientOnly>
+                    <Code className="h-6 w-6 text-primary" />
+                  </ClientOnly>
                 </div>
                 <CardTitle>Quality Code</CardTitle>
               </CardHeader>

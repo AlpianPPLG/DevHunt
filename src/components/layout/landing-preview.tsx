@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { ProductCard } from "@/components/product/product-card"
 import { Button } from "@/components/ui/button"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Loader2, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 interface Product {

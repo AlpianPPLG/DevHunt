@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Search, TrendingUp, Users } from "lucide-react"
 import Link from "next/link"
 import type { User } from "@/lib/auth"
+import ClientOnly from "@/components/client-only"
 
 export function HeroSection() {
   const [user, setUser] = useState<User | null>(null)
@@ -80,24 +81,30 @@ export function HeroSection() {
         {renderCTA()}
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 pt-8 border-t">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 pt-8 border-t" suppressHydrationWarning>
           <div className="flex flex-col items-center gap-2">
             <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-              <Search className="h-6 w-6 text-primary" />
+              <ClientOnly>
+                <Search className="h-6 w-6 text-primary" />
+              </ClientOnly>
             </div>
             <h3 className="font-semibold">Discover Tools</h3>
             <p className="text-sm text-muted-foreground text-center">Find the perfect tools for your next project</p>
           </div>
           <div className="flex flex-col items-center gap-2">
             <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-              <TrendingUp className="h-6 w-6 text-primary" />
+              <ClientOnly>
+                <TrendingUp className="h-6 w-6 text-primary" />
+              </ClientOnly>
             </div>
             <h3 className="font-semibold">Vote & Rank</h3>
             <p className="text-sm text-muted-foreground text-center">Help the community find the best tools</p>
           </div>
           <div className="flex flex-col items-center gap-2">
             <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-              <Users className="h-6 w-6 text-primary" />
+              <ClientOnly>
+                <Users className="h-6 w-6 text-primary" />
+              </ClientOnly>
             </div>
             <h3 className="font-semibold">Share & Discuss</h3>
             <p className="text-sm text-muted-foreground text-center">Connect with fellow developers</p>

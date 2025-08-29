@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { useState, useEffect } from "react"
 import { Camera, ExternalLink, AlertCircle, RefreshCw, Info } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { getUrlHelpMessage, isDirectImageUrl } from "@/lib/utils"
+import { getUrlHelpMessage } from "@/lib/utils"
 
 interface ThumbnailImageProps {
   src?: string
@@ -116,7 +117,7 @@ export function ThumbnailImage({
                     <ol className="list-decimal list-inside mt-1 space-y-1">
                       <li>Go to the Pinterest page</li>
                       <li>Right-click on the image</li>
-                      <li>Select "Copy image address"</li>
+                      <li>Select Copy image address</li>
                       <li>Use that URL instead</li>
                     </ol>
                   </div>

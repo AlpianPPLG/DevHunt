@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { toast } from "sonner"
@@ -17,7 +18,7 @@ interface ShareOptions {
  * Share via Web Share API if available, or fallback to clipboard copying
  */
 export async function shareAnalytics(options: ShareOptions) {
-  const { title = 'DevHunt Analytics', url = window.location.href, text = 'Check out my analytics on DevHunt', hashtags = ['devhunt', 'analytics'] } = options
+  const { title = 'DevHunt Analytics', url = window.location.href, text = 'Check out my analytics on DevHunt' } = options
   
   // Check if Web Share API is available
   if (navigator.share) {

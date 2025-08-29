@@ -22,6 +22,7 @@ export function VoteButton({ productId, initialVoteCount, className }: VoteButto
 
   useEffect(() => {
     checkVoteStatus()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId])
 
   const checkVoteStatus = async () => {

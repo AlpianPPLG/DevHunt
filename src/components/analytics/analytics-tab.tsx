@@ -22,7 +22,7 @@ interface AnalyticsTabProps {
   className?: string
 }
 
-export function AnalyticsTab({ username, className }: AnalyticsTabProps) {
+export function AnalyticsTab({ className }: AnalyticsTabProps) {
   const [activeTab, setActiveTab] = useState("overview")
 
   return (
@@ -221,7 +221,7 @@ export function AnalyticsTab({ username, className }: AnalyticsTabProps) {
           <Card>
             <CardHeader>
               <CardTitle className="text-lg">Your Activity Summary</CardTitle>
-              <CardDescription>What you've been doing on DevHunt</CardDescription>
+              <CardDescription>What youve been doing on DevHunt</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -243,15 +243,15 @@ export function AnalyticsTab({ username, className }: AnalyticsTabProps) {
                   <div className="space-y-2 text-xs text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <Clock className="h-3 w-3" />
-                      <span>Submitted "React 21" 17 minutes ago</span>
+                      <span>Submitted React 21 17 minutes ago</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="h-3 w-3" />
-                      <span>Voted on "Next.js 15" about 1 hour ago</span>
+                      <span>Voted on Next.js 15 about 1 hour ago</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Clock className="h-3 w-3" />
-                      <span>Commented on "TypeScript 5.0" 2 hours ago</span>
+                      <span>Commented on TypeScript 5.0 2 hours ago</span>
                     </div>
                   </div>
                 </div>

@@ -141,7 +141,7 @@ export function PrivacySection() {
                           </h4>
                           <p className="text-sm text-muted-foreground">
                             We reserve the right to make changes to this Privacy Policy at any time and for any reason.
-                            We will alert you about any changes by updating the "Last Updated" date of this Privacy Policy.
+                            We will alert you about any changes by updating the Last Updated date of this Privacy Policy.
                             You are encouraged to periodically review this Privacy Policy to stay informed of updates.
                           </p>
                         </div>

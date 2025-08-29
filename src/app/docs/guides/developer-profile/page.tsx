@@ -3,7 +3,7 @@
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronLeft, Check, Info, AlertCircle, UserCircle, Star, Github, Twitter, Globe, Mail } from "lucide-react"
 import Link from "next/link"
 
@@ -84,7 +84,7 @@ export default function DeveloperProfileGuidePage() {
               {/* Introduction */}
               <p className="lead">
                 Your DevHunt profile is your professional identity within the community. It showcases your contributions, 
-                tools you've created, and helps you build connections with other developers.
+                tools youve created, and helps you build connections with other developers.
               </p>
 
               <div className="flex p-4 mb-6 bg-primary/5 rounded-lg">
@@ -99,21 +99,21 @@ export default function DeveloperProfileGuidePage() {
               <h2 id="profile-basics" className="scroll-mt-20">Profile Basics</h2>
               
               <p>
-                Let's start with setting up the essential elements of your DevHunt profile:
+                Lets start with setting up the essential elements of your DevHunt profile:
               </p>
 
               <ol className="space-y-6 my-6">
                 <li className="flex flex-col gap-2">
                   <strong className="text-lg">1. Create an account</strong>
                   <p className="text-muted-foreground">
-                    If you haven't already, sign up for DevHunt using your email or via GitHub authentication.
+                    If you havent already, sign up for DevHunt using your email or via GitHub authentication.
                   </p>
                 </li>
                 
                 <li className="flex flex-col gap-2">
                   <strong className="text-lg">2. Navigate to profile settings</strong>
                   <p className="text-muted-foreground">
-                    Once logged in, click on your profile picture in the top-right corner and select "Profile Settings" from the dropdown menu.
+                    Once logged in, click on your profile picture in the top-right corner and select Profile Settings from the dropdown menu.
                   </p>
                 </li>
                 
@@ -127,7 +127,7 @@ export default function DeveloperProfileGuidePage() {
                 <li className="flex flex-col gap-2">
                   <strong className="text-lg">4. Complete your basic information</strong>
                   <p className="text-muted-foreground">
-                    Fill in your name, username, and location. Choose a username that's professional and easy to remember.
+                    Fill in your name, username, and location. Choose a username thats professional and easy to remember.
                   </p>
                 </li>
                 
@@ -143,7 +143,7 @@ export default function DeveloperProfileGuidePage() {
               <h2 id="optimizing-your-profile" className="scroll-mt-20">Optimizing Your Profile</h2>
               
               <p>
-                Now that you've set up the basics, let's optimize your profile to make it more compelling:
+                Now that youve set up the basics, lets optimize your profile to make it more compelling:
               </p>
 
               <div className="bg-muted p-6 rounded-lg mb-8">
@@ -151,7 +151,7 @@ export default function DeveloperProfileGuidePage() {
                 <ul className="space-y-3">
                   <li className="flex gap-2">
                     <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span>Add your professional skills and areas of expertise (e.g., "Full-stack Developer", "UX Designer")</span>
+                    <span>Add your professional skills and areas of expertise (e.g., Full-stack Developer, UX Designer)</span>
                   </li>
                   <li className="flex gap-2">
                     <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
@@ -159,7 +159,7 @@ export default function DeveloperProfileGuidePage() {
                   </li>
                   <li className="flex gap-2">
                     <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span>Mention your current company or projects you're working on</span>
+                    <span>Mention your current company or projects youre working on</span>
                   </li>
                   <li className="flex gap-2">
                     <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
@@ -177,7 +177,7 @@ export default function DeveloperProfileGuidePage() {
                   Pro Tip
                 </div>
                 <p className="mt-2">
-                  <strong>Show your personality!</strong> While keeping it professional, don't be afraid to let your personality 
+                  <strong>Show your personality!</strong> While keeping it professional, dont be afraid to let your personality 
                   shine through in your bio. What makes you unique as a developer? What are you passionate about beyond code?
                 </p>
               </div>
@@ -250,7 +250,7 @@ export default function DeveloperProfileGuidePage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground mb-2">
-                      Include your professional email if you're open to direct contact.
+                      Include your professional email if youre open to direct contact.
                     </p>
                     <Button variant="outline" size="sm" disabled>
                       name@example.com
@@ -263,7 +263,7 @@ export default function DeveloperProfileGuidePage() {
               <h2 id="showcasing-your-tools" className="scroll-mt-20">Showcasing Your Tools</h2>
               
               <p>
-                Your profile automatically displays all the tools you've submitted to DevHunt. Here's how to make them shine:
+                Your profile automatically displays all the tools youve submitted to DevHunt. Heres how to make them shine:
               </p>
 
               <ul className="space-y-4 my-6">
@@ -291,7 +291,7 @@ export default function DeveloperProfileGuidePage() {
                 <li className="flex flex-col gap-1">
                   <strong>Create meaningful collections</strong>
                   <p className="text-muted-foreground">
-                    Curate collections of tools (your own and others') around specific themes to showcase your expertise in particular areas.
+                    Curate collections of tools (your own and others) around specific themes to showcase your expertise in particular areas.
                   </p>
                 </li>
               </ul>

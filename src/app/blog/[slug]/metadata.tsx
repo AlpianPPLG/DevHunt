@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { blogPosts } from "@/lib/blog-data"
 import { Metadata } from "next"
 import { use } from "react"

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Camera } from 'lucide-react'
 
@@ -25,6 +25,11 @@ export function ImageWithFallback({
   ...props
 }: ImageWithFallbackProps & Omit<React.ComponentProps<typeof Image>, "src" | "alt" | "fill" | "width" | "height" | "className">) {
   const [error, setError] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   if (error) {
     return (
@@ -34,6 +39,17 @@ export function ImageWithFallback({
       >
         <Camera className="h-8 w-8 text-muted-foreground/50" />
       </div>
+    )
+  }
+
+  if (!mounted) {
+    // SSR placeholder to preserve layout and avoid hydration diffs from extensions mutating <img>
+    return (
+      <div
+        suppressHydrationWarning
+        className={className}
+        style={fill ? { position: 'absolute', inset: 0 } : { width, height }}
+      />
     )
   }
 

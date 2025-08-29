@@ -101,7 +101,7 @@ export default function VotingGuidePage() {
               
               <p>
                 The voting mechanism on DevHunt is straightforward but powerful. Each registered user can upvote products 
-                they find valuable or interesting. Here's how it works:
+                they find valuable or interesting. Heres how it works:
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
@@ -204,7 +204,7 @@ export default function VotingGuidePage() {
                 </div>
                 <p className="mt-2">
                   <strong>Timing matters!</strong> Recent votes have a stronger impact on trending calculations than older votes. 
-                  If you're launching a product, encouraging votes shortly after submission can significantly boost visibility.
+                  If youre launching a product, encouraging votes shortly after submission can significantly boost visibility.
                 </p>
               </div>
 
@@ -212,8 +212,8 @@ export default function VotingGuidePage() {
               <h2 id="trending-algorithm" className="scroll-mt-20">Trending Algorithm</h2>
               
               <p>
-                The DevHunt trending algorithm determines which products appear at the top of the main feed and in the "Trending" section. 
-                It's designed to highlight products gaining momentum rather than just showing all-time popular tools.
+                The DevHunt trending algorithm determines which products appear at the top of the main feed and in the Trending section. 
+                Its designed to highlight products gaining momentum rather than just showing all-time popular tools.
               </p>
 
               <h3 className="text-xl font-medium mt-6 mb-4">How the Trending Score is Calculated</h3>
@@ -302,7 +302,7 @@ export default function VotingGuidePage() {
                 </p>
                 <ul className="space-y-1 text-sm text-red-800 dark:text-red-200">
                   <li>• Vote manipulation through multiple accounts</li>
-                  <li>• Vote exchange groups or "upvote for upvote" arrangements</li>
+                  <li>• Vote exchange groups or upvote for upvote arrangements</li>
                   <li>• Paying for votes or offering incentives for votes</li>
                   <li>• Scripted voting or using bots to automate votes</li>
                 </ul>
@@ -312,7 +312,7 @@ export default function VotingGuidePage() {
               <h2 id="reputation-points" className="scroll-mt-20">Reputation Points</h2>
               
               <p>
-                Votes contribute to your reputation in the DevHunt community. Here's how voting affects reputation:
+                Votes contribute to your reputation in the DevHunt community. Heres how voting affects reputation:
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
@@ -368,7 +368,7 @@ export default function VotingGuidePage() {
               </div>
 
               <p>
-                As your reputation grows, you'll unlock new features and privileges on the platform, including:
+                As your reputation grows, youll unlock new features and privileges on the platform, including:
               </p>
 
               <ul className="space-y-2 my-4">
@@ -406,7 +406,7 @@ export default function VotingGuidePage() {
                 <div>
                   <h3 className="text-lg font-medium">Is there a limit to how many products I can vote for?</h3>
                   <p className="mt-1 text-muted-foreground">
-                    No, there's no limit to the number of products you can vote for. However, we encourage thoughtful voting rather than mass upvoting everything.
+                    No, theres no limit to the number of products you can vote for. However, we encourage thoughtful voting rather than mass upvoting everything.
                   </p>
                 </div>
 
@@ -426,7 +426,7 @@ export default function VotingGuidePage() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-medium">Do downvotes affect my product's ranking?</h3>
+                  <h3 className="text-lg font-medium">Do downvotes affect my products ranking?</h3>
                   <p className="mt-1 text-muted-foreground">
                     Currently, DevHunt only supports upvoting. We believe this creates a more positive community focused on highlighting great tools rather than criticizing others.
                   </p>

@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import { getCurrentUser } from "@/lib/auth"
 import { queryRows, queryRow, executeQuery } from "@/lib/database"
@@ -9,18 +10,13 @@ const UpdateCollectionSchema = z.object({
   is_public: z.boolean().optional()
 })
 
-const AddProductSchema = z.object({
-  product_id: z.string().min(1),
-  note: z.string().max(500).optional()
-})
-
 // GET - Fetch collection details with products
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const collectionId = params.id
+    const { id: collectionId } = await context.params
     const user = await getCurrentUser()
 
     // Fetch collection details
@@ -111,8 +107,8 @@ export async function GET(
 
 // PUT - Update collection
 export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = await getCurrentUser()
@@ -123,7 +119,7 @@ export async function PUT(
       )
     }
 
-    const collectionId = params.id
+    const { id: collectionId } = await context.params
     const body = await request.json()
     const validatedData = UpdateCollectionSchema.parse(body)
 
@@ -201,8 +197,8 @@ export async function PUT(
 
 // DELETE - Delete collection
 export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = await getCurrentUser()
@@ -213,7 +209,7 @@ export async function DELETE(
       )
     }
 
-    const collectionId = params.id
+    const { id: collectionId } = await context.params
 
     // Verify collection exists and user owns it
     const collection = await queryRow(

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { notFound } from "next/navigation"
 import { Header } from "@/components/layout/header"
 import { VoteButtons } from "@/components/product/vote-buttons"
@@ -6,7 +7,7 @@ import { queryRow, queryRows } from "@/lib/database"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { ExternalLink, Calendar, Github, Play } from "lucide-react"
+import { ExternalLink, Calendar } from "lucide-react"
 import { formatDistanceToNow } from "date-fns"
 import Link from "next/link"
 
@@ -63,6 +64,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             {/* Product Thumbnail */}
             <div className="w-24 h-24 rounded-xl bg-muted flex items-center justify-center overflow-hidden flex-shrink-0">
               {product.thumbnail_url ? (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={product.thumbnail_url.startsWith('/') || product.thumbnail_url.startsWith('data:') 
                     ? product.thumbnail_url 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { useState } from "react"
@@ -28,7 +29,6 @@ import {
   Linkedin, 
   Facebook, 
   Mail, 
-  Link, 
   Check,
   Code
 } from "lucide-react"
@@ -54,7 +54,6 @@ export function ShareAnalyticsDialog({
   username, 
   timeRange,
   filterOptions,
-  analyticsData,
   children 
 }: ShareDialogProps) {
   const [copied, setCopied] = useState(false)
@@ -69,6 +68,7 @@ export function ShareAnalyticsDialog({
       setCopied(true)
       toast.success('Link copied to clipboard!')
       setTimeout(() => setCopied(false), 2000)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error('Failed to copy link')
     }
@@ -78,6 +78,7 @@ export function ShareAnalyticsDialog({
     try {
       await navigator.clipboard.writeText(embedCode)
       toast.success('Embed code copied to clipboard!')
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error('Failed to copy embed code')
     }

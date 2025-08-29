@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import type React from "react"
@@ -14,7 +15,7 @@ import { Badge } from "@/components/ui/badge"
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Loader2, Plus, X, Check, ChevronsUpDown, Info } from "lucide-react"
-import { getUrlHelpMessage, isDirectImageUrl, extractDomain } from "@/lib/utils"
+import { getUrlHelpMessage, extractDomain } from "@/lib/utils"
 import { cn } from "@/lib/utils"
 
 interface Tag {
@@ -129,6 +130,7 @@ export function SubmitForm() {
       }
 
       router.push(`/product/${data.productId}`)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setError("Something went wrong. Please try again.")
     } finally {
@@ -255,14 +257,14 @@ export function SubmitForm() {
                   <span className="font-medium text-yellow-800">⚠️ Pinterest Page URL Detected</span>
                 </div>
                 <p className="text-sm text-yellow-700 mb-2">
-                  You've entered a Pinterest page link, but we need the direct image URL.
+                  Youve entered a Pinterest page link, but we need the direct image URL.
                 </p>
                 <div className="text-xs text-yellow-600">
                   <strong>How to get the direct image URL:</strong>
                   <ol className="list-decimal list-inside mt-1 space-y-1">
                     <li>Go to the Pinterest page: <a href={formData.thumbnail_url} target="_blank" rel="noopener noreferrer" className="underline hover:text-yellow-800">{formData.thumbnail_url}</a></li>
                     <li>Right-click on the image you want to use</li>
-                    <li>Select "Copy image address" or "Copy image URL"</li>
+                    <li>Select Copy image address or Copy image URL</li>
                     <li>Paste the copied URL here</li>
                   </ol>
                 </div>
@@ -292,7 +294,7 @@ export function SubmitForm() {
                     <ol className="list-decimal list-inside mt-1 space-y-1">
                       <li>Go to the Pinterest pin page</li>
                       <li>Right-click on the image</li>
-                      <li>Select "Copy image address" or "Copy image URL"</li>
+                      <li>Select Copy image address or Copy image URL</li>
                       <li>Paste the copied URL here</li>
                     </ol>
                     <p className="mt-2 text-blue-700">

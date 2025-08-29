@@ -3,8 +3,8 @@
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChevronLeft, Check, Info, AlertCircle, FolderOpen, Share2, Pencil, Users, Lightbulb } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { ChevronLeft, Check, Info, AlertCircle, FolderOpen, Share2, Users, Lightbulb } from "lucide-react"
 import Link from "next/link"
 
 export default function CollectionsGuidePage() {
@@ -173,28 +173,28 @@ export default function CollectionsGuidePage() {
                 <li className="flex flex-col gap-1">
                   <strong>Technology-specific collections</strong>
                   <p className="text-muted-foreground">
-                    Tools for specific languages, frameworks, or platforms (e.g., "Essential React Dev Tools" or "Python Data Science Toolkit").
+                    Tools for specific languages, frameworks, or platforms (e.g., Essential React Dev Tools or Python Data Science Toolkit).
                   </p>
                 </li>
                 
                 <li className="flex flex-col gap-1">
                   <strong>Workflow collections</strong>
                   <p className="text-muted-foreground">
-                    Tools that work together for specific development workflows (e.g., "Full-Stack Development Essentials" or "DevOps Pipeline Tools").
+                    Tools that work together for specific development workflows (e.g., Full-Stack Development Essentials or DevOps Pipeline Tools).
                   </p>
                 </li>
                 
                 <li className="flex flex-col gap-1">
                   <strong>Problem-solving collections</strong>
                   <p className="text-muted-foreground">
-                    Tools that address specific challenges (e.g., "Accessibility Testing Tools" or "Performance Optimization Toolkit").
+                    Tools that address specific challenges (e.g., Accessibility Testing Tools or Performance Optimization Toolkit).
                   </p>
                 </li>
                 
                 <li className="flex flex-col gap-1">
                   <strong>Comparison collections</strong>
                   <p className="text-muted-foreground">
-                    Collections that compare similar tools for different use cases (e.g., "Headless CMS Options Compared" or "JavaScript Testing Frameworks").
+                    Collections that compare similar tools for different use cases (e.g., Headless CMS Options Compared or JavaScript Testing Frameworks).
                   </p>
                 </li>
               </ul>
@@ -210,7 +210,7 @@ export default function CollectionsGuidePage() {
                 <li className="flex flex-col gap-2">
                   <strong className="text-lg">1. Navigate to collections</strong>
                   <p className="text-muted-foreground">
-                    Go to the Collections section in your profile or click the "Create Collection" button in the main Collections page.
+                    Go to the Collections section in your profile or click the Create Collection button in the main Collections page.
                   </p>
                 </li>
                 
@@ -224,7 +224,7 @@ export default function CollectionsGuidePage() {
                 <li className="flex flex-col gap-2">
                   <strong className="text-lg">3. Upload a cover image</strong>
                   <p className="text-muted-foreground">
-                    Add an eye-catching cover image that represents your collection's theme. Recommended size is 1200×630 pixels.
+                    Add an eye-catching cover image that represents your collections theme. Recommended size is 1200×630 pixels.
                   </p>
                 </li>
                 
@@ -238,7 +238,7 @@ export default function CollectionsGuidePage() {
                 <li className="flex flex-col gap-2">
                   <strong className="text-lg">5. Create the collection</strong>
                   <p className="text-muted-foreground">
-                    Click "Create Collection" to save your collection. You can now start adding tools to it.
+                    Click Create Collection to save your collection. You can now start adding tools to it.
                   </p>
                 </li>
               </ol>
@@ -252,7 +252,7 @@ export default function CollectionsGuidePage() {
                   </li>
                   <li className="flex gap-2">
                     <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span>Use descriptive, searchable titles that clearly communicate the collection's purpose</span>
+                    <span>Use descriptive, searchable titles that clearly communicate the collections purpose</span>
                   </li>
                   <li className="flex gap-2">
                     <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
@@ -264,7 +264,7 @@ export default function CollectionsGuidePage() {
                   </li>
                   <li className="flex gap-2">
                     <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span>Use high-quality, relevant cover images that represent the collection's theme</span>
+                    <span>Use high-quality, relevant cover images that represent the collections theme</span>
                   </li>
                 </ul>
               </div>
@@ -273,7 +273,7 @@ export default function CollectionsGuidePage() {
               <h2 id="adding-tools" className="scroll-mt-20">Adding Tools</h2>
               
               <p>
-                Once you've created a collection, you can start adding tools to it:
+                Once youve created a collection, you can start adding tools to it:
               </p>
 
               <div className="grid grid-cols-1 gap-6 my-8">
@@ -284,10 +284,10 @@ export default function CollectionsGuidePage() {
                   <CardContent>
                     <ol className="space-y-2 text-muted-foreground">
                       <li>1. Navigate to your collection page</li>
-                      <li>2. Click the "Add Tools" button</li>
+                      <li>2. Click the Add Tools button</li>
                       <li>3. Search for tools by name or browse by category</li>
                       <li>4. Select tools to add to your collection</li>
-                      <li>5. Click "Add Selected Tools" to complete the process</li>
+                      <li>5. Click Add Selected Tools to complete the process</li>
                     </ol>
                   </CardContent>
                 </Card>
@@ -299,10 +299,10 @@ export default function CollectionsGuidePage() {
                   <CardContent>
                     <ol className="space-y-2 text-muted-foreground">
                       <li>1. Navigate to the page of the tool you want to add</li>
-                      <li>2. Click the "Add to Collection" button</li>
+                      <li>2. Click the Add to Collection button</li>
                       <li>3. Select the collection from the dropdown menu</li>
-                      <li>4. Optionally add a note about why you're including this tool</li>
-                      <li>5. Click "Add" to include the tool in your collection</li>
+                      <li>4. Optionally add a note about why youre including this tool</li>
+                      <li>5. Click Add to include the tool in your collection</li>
                     </ol>
                   </CardContent>
                 </Card>
@@ -313,8 +313,8 @@ export default function CollectionsGuidePage() {
                   Pro Tip
                 </div>
                 <p className="mt-2">
-                  <strong>Add context!</strong> When adding tools to your collection, include a brief note explaining why you've 
-                  included each tool and how it fits into the collection's theme. This adds tremendous value for users discovering 
+                  <strong>Add context!</strong> When adding tools to your collection, include a brief note explaining why youve 
+                  included each tool and how it fits into the collections theme. This adds tremendous value for users discovering 
                   these tools through your collection.
                 </p>
               </div>
@@ -322,7 +322,7 @@ export default function CollectionsGuidePage() {
               <h3 className="text-xl font-medium mt-6 mb-4">Organizing Tools in Your Collection</h3>
               
               <p>
-                Once you've added tools to your collection, you can organize them for maximum impact:
+                Once youve added tools to your collection, you can organize them for maximum impact:
               </p>
 
               <ul className="space-y-4 my-6">
@@ -336,14 +336,14 @@ export default function CollectionsGuidePage() {
                 <li className="flex flex-col gap-1">
                   <strong>Adding notes</strong>
                   <p className="text-muted-foreground">
-                    Add or edit notes for each tool to explain why it's included and how it fits into the collection's theme.
+                    Add or edit notes for each tool to explain why its included and how it fits into the collections theme.
                   </p>
                 </li>
                 
                 <li className="flex flex-col gap-1">
                   <strong>Removing tools</strong>
                   <p className="text-muted-foreground">
-                    Remove any tools that no longer fit your collection's purpose or that have been replaced by better alternatives.
+                    Remove any tools that no longer fit your collections purpose or that have been replaced by better alternatives.
                   </p>
                 </li>
               </ul>
@@ -362,7 +362,7 @@ export default function CollectionsGuidePage() {
                   <div>
                     <h4 className="font-semibold">1. Introduction</h4>
                     <p className="text-sm text-muted-foreground">
-                      Explain what the collection is about and who it's for. What problem does this collection help solve?
+                      Explain what the collection is about and who its for. What problem does this collection help solve?
                     </p>
                   </div>
                   
@@ -376,7 +376,7 @@ export default function CollectionsGuidePage() {
                   <div>
                     <h4 className="font-semibold">3. Tool Categories</h4>
                     <p className="text-sm text-muted-foreground">
-                      Group tools into logical categories if your collection is large (e.g., "Frontend Tools," "Backend Tools," "Testing Tools").
+                      Group tools into logical categories if your collection is large (e.g., Frontend Tools, Backend Tools, Testing Tools).
                     </p>
                   </div>
                   
@@ -407,7 +407,7 @@ export default function CollectionsGuidePage() {
                     wanting to upgrade their toolkit.
                   </p>
                   <p>
-                    I've created this collection after working on over 30 React projects across various industries. These tools have 
+                    Ive created this collection after working on over 30 React projects across various industries. These tools have 
                     consistently helped me build more efficiently while maintaining code quality and performance.
                   </p>
                   <p>
@@ -432,7 +432,7 @@ export default function CollectionsGuidePage() {
               <h2 id="sharing-and-promotion" className="scroll-mt-20">Sharing and Promotion</h2>
               
               <p>
-                Once you've created a valuable collection, share it with the community:
+                Once youve created a valuable collection, share it with the community:
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
@@ -490,7 +490,7 @@ export default function CollectionsGuidePage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">
-                      Let creators of tools in your collection know they've been featured. They may share your collection with 
+                      Let creators of tools in your collection know theyve been featured. They may share your collection with 
                       their audience as well.
                     </p>
                   </CardContent>
@@ -541,7 +541,7 @@ export default function CollectionsGuidePage() {
                 <div>
                   <h3 className="text-lg font-medium">How many collections can I create?</h3>
                   <p className="mt-1 text-muted-foreground">
-                    There's no limit to the number of collections you can create. However, we recommend focusing on quality over quantity 
+                    Theres no limit to the number of collections you can create. However, we recommend focusing on quality over quantity 
                     to build your reputation as a thoughtful curator.
                   </p>
                 </div>
@@ -550,7 +550,7 @@ export default function CollectionsGuidePage() {
                   <h3 className="text-lg font-medium">Can I include my own tools in collections?</h3>
                   <p className="mt-1 text-muted-foreground">
                     Yes, you can include your own tools in your collections. However, to maintain credibility, ensure they genuinely fit the 
-                    collection's theme and are balanced with other relevant tools.
+                    collections theme and are balanced with other relevant tools.
                   </p>
                 </div>
 
@@ -565,7 +565,7 @@ export default function CollectionsGuidePage() {
                 <div>
                   <h3 className="text-lg font-medium">Can I collaborate on collections with other users?</h3>
                   <p className="mt-1 text-muted-foreground">
-                    Currently, collections are individual, but we're working on collaborative collections for the future. For now, you can mention 
+                    Currently, collections are individual, but were working on collaborative collections for the future. For now, you can mention 
                     contributors in your collection description.
                   </p>
                 </div>

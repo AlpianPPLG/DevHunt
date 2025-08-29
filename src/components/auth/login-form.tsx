@@ -39,6 +39,7 @@ export function LoginForm() {
 
       router.push("/dashboard")
       router.refresh()
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setError("Something went wrong. Please try again.")
     } finally {

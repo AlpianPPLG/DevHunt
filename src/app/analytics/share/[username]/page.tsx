@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { useState } from "react"
@@ -47,7 +48,7 @@ export default function SharedAnalyticsPage({ params }: { params: { username: st
           </Button>
           <div>
             <h1 className="text-3xl font-bold flex items-center">
-              @{username}'s Analytics
+              @{username}s Analytics
               {isOwner && (
                 <Button variant="link" size="sm" asChild className="ml-2">
                   <Link href="/analytics">

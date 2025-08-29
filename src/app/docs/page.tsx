@@ -3,7 +3,7 @@ import { Footer } from "@/components/layout/footer"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Search, Book, FileText, Code, ArrowRight, BookOpen, FileCode, Coffee, Users } from "lucide-react"
+import { Book, FileText, Code, ArrowRight, BookOpen, FileCode } from "lucide-react"
 import Link from "next/link"
 
 export const metadata = {
@@ -101,7 +101,7 @@ export default function DocumentationPage() {
                         <div>
                           <h3 className="font-medium">Improved Search Functionality</h3>
                           <p className="text-sm text-muted-foreground mt-1">
-                            We've enhanced our search algorithm to provide more accurate and relevant results.
+                            Weve enhanced our search algorithm to provide more accurate and relevant results.
                           </p>
                         </div>
                         <span className="text-xs text-muted-foreground">June 2, 2025</span>
@@ -125,7 +125,7 @@ export default function DocumentationPage() {
                         <div>
                           <h3 className="font-medium">Documentation Redesign</h3>
                           <p className="text-sm text-muted-foreground mt-1">
-                            We've completely redesigned our documentation for a better user experience.
+                            Weve completely redesigned our documentation for a better user experience.
                           </p>
                         </div>
                         <span className="text-xs text-muted-foreground">May 15, 2025</span>
@@ -240,8 +240,8 @@ export default function DocumentationPage() {
                           DevHunt uses API keys for authentication. Learn how to generate and use API keys to access our endpoints.
                         </p>
                         <div className="bg-muted p-3 rounded-md overflow-x-auto">
-                          <pre className="text-xs"><code>curl -X GET "https://api.devhunt.io/v1/tools" \
-  -H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+                          <pre className="text-xs"><code>curl -X GET https://api.devhunt.io/v1/tools \
+  -H Authorization: Bearer YOUR_API_KEY</code></pre>
                         </div>
                       </CardContent>
                     </Card>
@@ -353,7 +353,7 @@ def get_trending_tools():
                     <div className="rounded-lg border p-4">
                       <h3 className="font-semibold">How do I get an API key?</h3>
                       <p className="text-sm text-muted-foreground mt-2">
-                        You can generate an API key from your account settings page after logging in. Go to Settings {">"}  API Keys and click "Generate New Key".
+                        You can generate an API key from your account settings page after logging in. Go to Settings {">"}  API Keys and click Generate New Key.
                       </p>
                     </div>
                     
@@ -397,7 +397,7 @@ def get_trending_tools():
             <div className="flex flex-col items-center text-center space-y-4">
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Need Help?</h2>
               <p className="text-muted-foreground max-w-[600px]">
-                Can't find what you're looking for? Our support team is here to help.
+                Cant find what youre looking for? Our support team is here to help.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-2">
                 <Button asChild>

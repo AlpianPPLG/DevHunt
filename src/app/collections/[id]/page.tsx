@@ -1,6 +1,5 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import Image from "next/image"
 import { notFound } from "next/navigation"
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react"
 import { Button } from "@/components/ui/button"

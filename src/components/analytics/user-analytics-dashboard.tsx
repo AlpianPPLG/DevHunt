@@ -6,14 +6,11 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { 
-  TrendingUp, 
-  TrendingDown, 
   Users, 
   MessageSquare, 
   Eye, 
   ThumbsUp, 
   Calendar,
-  BarChart3,
   Activity,
   Target,
   Award,
@@ -110,6 +107,7 @@ export function UserAnalyticsDashboard({
 
   useEffect(() => {
     fetchAnalytics()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [username, localTimeRange, filterOptions])
   
   // Sync with parent timeRange
@@ -207,12 +205,6 @@ export function UserAnalyticsDashboard({
       month: 'short',
       day: 'numeric'
     })
-  }
-
-  const getTrendIcon = (current: number, previous: number) => {
-    if (current > previous) return <TrendingUp className="h-4 w-4 text-green-500" />
-    if (current < previous) return <TrendingDown className="h-4 w-4 text-red-500" />
-    return <BarChart3 className="h-4 w-4 text-gray-500" />
   }
 
   return (
@@ -341,7 +333,7 @@ export function UserAnalyticsDashboard({
           <CardContent>
             <div className="text-2xl font-bold">{analytics.user_activity.products_voted_on}</div>
             <p className="text-xs text-muted-foreground">
-              Products you've voted on
+              Products youve voted on
             </p>
           </CardContent>
         </Card>

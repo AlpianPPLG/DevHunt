@@ -280,7 +280,7 @@ export function AdvancedSearch() {
           
           {filters.query && (
             <Badge variant="outline">
-              Search: "{filters.query}"
+              Search: {filters.query}
               <button
                 onClick={() => setFilters(prev => ({ ...prev, query: "" }))}
                 className="ml-1 hover:bg-muted-foreground/20 rounded-full p-0.5"

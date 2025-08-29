@@ -93,7 +93,7 @@ export function ContactSection() {
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Contact Us</h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Have a question, suggestion, or just want to say hello? We'd love to hear from you!
+            Have a question, suggestion, or just want to say hello? Wed love to hear from you!
           </p>
         </div>
         
@@ -219,7 +219,7 @@ export function ContactSection() {
               <CardHeader>
                 <CardTitle>Send Us a Message</CardTitle>
                 <CardDescription>
-                  Fill out the form below and we'll get back to you as soon as possible.
+                  Fill out the form below and well get back to you as soon as possible.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -341,7 +341,7 @@ export function ContactSection() {
                   <CardContent className="p-4">
                     <h4 className="font-medium mb-2">How do I report a bug or issue?</h4>
                     <p className="text-sm text-muted-foreground">
-                      Use this contact form with the subject "Technical Support" to report any issues.
+                      Use this contact form with the subject Technical Support to report any issues.
                     </p>
                   </CardContent>
                 </Card>
@@ -350,7 +350,7 @@ export function ContactSection() {
                   <CardContent className="p-4">
                     <h4 className="font-medium mb-2">Do you offer partnership opportunities?</h4>
                     <p className="text-sm text-muted-foreground">
-                      Yes! Select "Partnership Opportunity" in the subject dropdown for more information.
+                      Yes! Select Partnership Opportunity in the subject dropdown for more information.
                     </p>
                   </CardContent>
                 </Card>

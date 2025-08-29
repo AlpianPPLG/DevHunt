@@ -34,7 +34,7 @@ export function AboutSection() {
               <p className="text-muted-foreground">
                 We believe that the right tools can dramatically improve the development experience.
                 DevHunt aims to cut through the noise and highlight tools that actually make a difference
-                to developers' workflows and productivity.
+                to developers workflows and productivity.
               </p>
             </div>
             
@@ -42,7 +42,7 @@ export function AboutSection() {
               <Button asChild className="mt-4 group">
                 <Link href="#team">
                   Meet Our Team 
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight suppressHydrationWarning className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
             </div>
@@ -52,7 +52,7 @@ export function AboutSection() {
           <div className="grid gap-6 sm:grid-cols-2">
             <Card className="bg-primary/5 border-primary/10">
               <CardContent className="p-6">
-                <Users className="h-10 w-10 mb-4 text-primary" />
+                <Users suppressHydrationWarning className="h-10 w-10 mb-4 text-primary" />
                 <h3 className="text-lg font-semibold mb-2">Community Driven</h3>
                 <p className="text-sm text-muted-foreground">
                   Our platform is powered by developers like you who share, vote, and discover tools together.
@@ -62,7 +62,7 @@ export function AboutSection() {
             
             <Card className="bg-primary/5 border-primary/10">
               <CardContent className="p-6">
-                <Code className="h-10 w-10 mb-4 text-primary" />
+                <Code suppressHydrationWarning className="h-10 w-10 mb-4 text-primary" />
                 <h3 className="text-lg font-semibold mb-2">For Developers</h3>
                 <p className="text-sm text-muted-foreground">
                   Built by developers for developers, focusing on tools that actually matter.
@@ -72,7 +72,7 @@ export function AboutSection() {
             
             <Card className="bg-primary/5 border-primary/10">
               <CardContent className="p-6">
-                <Target className="h-10 w-10 mb-4 text-primary" />
+                <Target suppressHydrationWarning className="h-10 w-10 mb-4 text-primary" />
                 <h3 className="text-lg font-semibold mb-2">Curated Selection</h3>
                 <p className="text-sm text-muted-foreground">
                   Quality over quantity—we highlight the most valuable developer tools.
@@ -82,7 +82,7 @@ export function AboutSection() {
             
             <Card className="bg-primary/5 border-primary/10">
               <CardContent className="p-6">
-                <Globe className="h-10 w-10 mb-4 text-primary" />
+                <Globe suppressHydrationWarning className="h-10 w-10 mb-4 text-primary" />
                 <h3 className="text-lg font-semibold mb-2">Global Community</h3>
                 <p className="text-sm text-muted-foreground">
                   Connect with developers from around the world and expand your toolkit.
@@ -104,7 +104,7 @@ export function AboutSection() {
               <div className="relative">
                 <div className="flex items-center justify-center">
                   <div className="absolute z-10 w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                    <Clock className="h-4 w-4 text-primary-foreground" />
+                    <Clock suppressHydrationWarning className="h-4 w-4 text-primary-foreground" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
@@ -124,7 +124,7 @@ export function AboutSection() {
               <div className="relative">
                 <div className="flex items-center justify-center">
                   <div className="absolute z-10 w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                    <Lightbulb className="h-4 w-4 text-primary-foreground" />
+                    <Lightbulb suppressHydrationWarning className="h-4 w-4 text-primary-foreground" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
@@ -144,7 +144,7 @@ export function AboutSection() {
               <div className="relative">
                 <div className="flex items-center justify-center">
                   <div className="absolute z-10 w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                    <Target className="h-4 w-4 text-primary-foreground" />
+                    <Target suppressHydrationWarning className="h-4 w-4 text-primary-foreground" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
@@ -152,7 +152,7 @@ export function AboutSection() {
                     <h3 className="font-bold">Present</h3>
                     <h4 className="text-lg font-semibold">Looking Ahead</h4>
                     <p className="text-muted-foreground mt-2">
-                      We're continuously improving DevHunt with new features to better serve the developer community.
+                      Were continuously improving DevHunt with new features to better serve the developer community.
                     </p>
                   </div>
                   <div className="md:pl-10">

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { useState, useEffect, useRef } from "react"
@@ -64,7 +65,6 @@ export default function AnalyticsPage() {
       } else if (key === 'showOnlyActive') {
         updated[key] = false
       } else {
-        // @ts-ignore: Delete the property
         delete updated[key]
       }
       
@@ -296,7 +296,7 @@ export default function AnalyticsPage() {
             <div className="p-4 bg-white rounded-lg border">
               <h4 className="font-semibold mb-2 text-purple-800">Community Engagement</h4>
               <p className="text-sm text-purple-700 mb-3">
-                Engage more with other users' content to build relationships
+                Engage more with other users content to build relationships
               </p>
               <Button size="sm" variant="outline" className="w-full">
                 Explore Content

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { notFound } from "next/navigation"
@@ -9,13 +10,11 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, ChevronLeft, Share2, Twitter, Facebook, Linkedin, Copy, Check } from "lucide-react"
+import { Calendar, Clock, ChevronLeft, Twitter, Facebook, Linkedin, Copy, Check } from "lucide-react"
 import { useState, use, useEffect } from "react"
-import { useRouter } from "next/navigation"
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const [copied, setCopied] = useState(false);
-  const router = useRouter();
   const resolvedParams = use(params as any) as { slug: string };
   const post = blogPosts.find(post => post.slug === resolvedParams.slug);
   

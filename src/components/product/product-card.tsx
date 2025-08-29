@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { TagBadge } from "./tag-badge"
 import { ThumbnailImage } from "./thumbnail-image"
 import { VoteButtons } from "./vote-buttons"
-import { ChevronUp, ExternalLink, MessageCircle, Loader2, TrendingUp, Flame } from "lucide-react"
+import { ExternalLink, MessageCircle, TrendingUp, Flame } from "lucide-react"
 import { formatDistanceToNow } from "date-fns"
 
 interface Product {
@@ -60,6 +60,7 @@ export function ProductCard({
   const [isVotingLocal, setIsVotingLocal] = useState(false)
   const [localVoteCount, setLocalVoteCount] = useState(currentVoteCount || 0)
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleVote = async () => {
     if (isVoting || isVotingLocal) return
 

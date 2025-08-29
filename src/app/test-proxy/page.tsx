@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from "react"
@@ -355,7 +357,7 @@ export default function TestProxyPage() {
               <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
                 <li>Go to the Pinterest pin page</li>
                 <li>Right-click on the image</li>
-                <li>Select "Copy image address" or "Copy image URL"</li>
+                <li>Select Copy image address or Copy image URL</li>
                 <li>Paste the copied URL here and test</li>
               </ol>
             </div>

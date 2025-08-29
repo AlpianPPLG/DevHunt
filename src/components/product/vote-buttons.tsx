@@ -30,6 +30,7 @@ export function VoteButtons({
 
   useEffect(() => {
     checkVoteStatus()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId])
 
   const checkVoteStatus = async () => {
@@ -66,6 +67,7 @@ export function VoteButtons({
         currentlyVoted = true
       } else if (voteType === 'downvote' && isDownvoted) {
         method = "DELETE"
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         currentlyVoted = true
       }
 

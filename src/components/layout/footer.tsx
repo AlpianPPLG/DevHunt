@@ -64,6 +64,7 @@ export function Footer() {
       await new Promise(resolve => setTimeout(resolve, 1000))
       setSubscriptionStatus("success")
       setEmail("")
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setSubscriptionStatus("error")
     } finally {

@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { getCurrentUser } from "@/lib/auth"
 import { queryRows, queryRow } from "@/lib/database"
 
 export async function GET(
-  request: Request,
-  { params }: { params: { productId: string } }
+  request: NextRequest,
+  context: { params: Promise<{ productId: string }> }
 ) {
   try {
     const user = await getCurrentUser()
@@ -15,7 +15,7 @@ export async function GET(
       )
     }
 
-    const productId = params.productId
+    const { productId } = await context.params
     const { searchParams } = new URL(request.url)
     const days = parseInt(searchParams.get("days") || "30")
 

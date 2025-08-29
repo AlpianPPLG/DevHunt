@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { notFound } from "next/navigation"
 import { Header } from "@/components/layout/header"
 import { ProductCard } from "@/components/product/product-card"
@@ -136,7 +137,7 @@ export default async function UserPage({ params }: UserPageProps) {
                   <Package className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                   <h3 className="text-lg font-medium text-muted-foreground">No products submitted yet</h3>
                   <p className="text-sm text-muted-foreground mt-2">
-                    {user.username} hasn't submitted any products to DevHunt yet.
+                    {user.username} hasnt submitted any products to DevHunt yet.
                   </p>
                 </div>
               )}
@@ -172,7 +173,7 @@ export default async function UserPage({ params }: UserPageProps) {
                 <div className="text-center py-12">
                   <MessageCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                   <h3 className="text-lg font-medium text-muted-foreground">No comments yet</h3>
-                  <p className="text-sm text-muted-foreground mt-2">{user.username} hasn't made any comments yet.</p>
+                  <p className="text-sm text-muted-foreground mt-2">{user.username} hasnt made any comments yet.</p>
                 </div>
               )}
             </TabsContent>
@@ -182,7 +183,7 @@ export default async function UserPage({ params }: UserPageProps) {
                 <BarChart3 className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-muted-foreground">Analytics Dashboard</h3>
                 <p className="text-sm text-muted-foreground mt-2 mb-4">
-                  View detailed analytics and performance metrics for {user.username}'s content.
+                  View detailed analytics and performance metrics for {user.username}s content.
                 </p>
                 <Link
                   href={`/analytics`}

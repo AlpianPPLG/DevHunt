@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import { getCurrentUser } from "@/lib/auth"
 import { queryRow, executeQuery } from "@/lib/database"
@@ -10,8 +10,8 @@ const AddProductSchema = z.object({
 
 // POST - Add product to collection
 export async function POST(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = await getCurrentUser()
@@ -22,7 +22,7 @@ export async function POST(
       )
     }
 
-    const collectionId = params.id
+    const { id: collectionId } = await context.params
     const body = await request.json()
     const validatedData = AddProductSchema.parse(body)
 
@@ -119,8 +119,8 @@ export async function POST(
 
 // DELETE - Remove product from collection
 export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = await getCurrentUser()
@@ -131,7 +131,7 @@ export async function DELETE(
       )
     }
 
-    const collectionId = params.id
+    const { id: collectionId } = await context.params
     const { searchParams } = new URL(request.url)
     const productId = searchParams.get("productId")
 

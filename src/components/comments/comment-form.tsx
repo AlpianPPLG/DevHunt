@@ -55,6 +55,7 @@ export function CommentForm({
 
       setContent("")
       onCommentAdded?.()
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setError("Something went wrong. Please try again.")
     } finally {

@@ -3,8 +3,8 @@
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChevronLeft, Check, Info, AlertCircle, Code, Lock, Clock, Database, Server } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { ChevronLeft, Info, AlertCircle, Code, Lock, Clock, Server } from "lucide-react"
 import Link from "next/link"
 
 export default function ApiGuidePage() {
@@ -99,21 +99,21 @@ export default function ApiGuidePage() {
               <h2 id="getting-started" className="scroll-mt-20">Getting Started</h2>
               
               <p>
-                To start using the DevHunt API, you'll need to:
+                To start using the DevHunt API, youll need to:
               </p>
 
               <ol className="space-y-6 my-6">
                 <li className="flex flex-col gap-2">
                   <strong className="text-lg">1. Create a DevHunt account</strong>
                   <p className="text-muted-foreground">
-                    If you don't already have an account, sign up at <Link href="/signup" className="text-primary hover:underline">devhunt.io/signup</Link>.
+                    If you dont already have an account, sign up at <Link href="/signup" className="text-primary hover:underline">devhunt.io/signup</Link>.
                   </p>
                 </li>
                 
                 <li className="flex flex-col gap-2">
                   <strong className="text-lg">2. Generate an API key</strong>
                   <p className="text-muted-foreground">
-                    Navigate to your account settings and generate an API key from the "API Keys" section.
+                    Navigate to your account settings and generate an API key from the API Keys section.
                   </p>
                 </li>
                 
@@ -154,7 +154,7 @@ curl -X GET "https://api.devhunt.io/v1/tools" \\
                   <CardContent>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li>• Never expose your API key in client-side code</li>
-                      <li>• Don't commit your API key to version control</li>
+                      <li>• Dont commit your API key to version control</li>
                       <li>• Use environment variables to store your key</li>
                       <li>• Rotate your keys periodically for enhanced security</li>
                     </ul>
@@ -285,7 +285,7 @@ curl -X GET "https://api.devhunt.io/v1/tools" \\
 
               <h3 className="text-xl font-medium mt-6 mb-4">Example Response</h3>
 
-              <p>Here's a sample response from the <code>/v1/tools</code> endpoint:</p>
+              <p>Heres a sample response from the <code>/v1/tools</code> endpoint:</p>
 
               <div className="bg-muted p-4 rounded-md overflow-x-auto mb-8">
                 <pre className="text-sm"><code>{`{
@@ -504,7 +504,7 @@ const jsTools = await fetch(
                   <h3 className="text-lg font-medium">How do I get an API key?</h3>
                   <p className="mt-1 text-muted-foreground">
                     You can generate an API key from your account settings page. Navigate to Settings {">"}  API Keys 
-                    and click "Generate New Key".
+                    and click Generate New Key.
                   </p>
                 </div>
 

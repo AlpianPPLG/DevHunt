@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from "next/server"
 import { getCurrentUser } from "@/lib/auth"
 import { queryRows } from "@/lib/database"

@@ -6,11 +6,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { 
-  MessageSquare, 
   Users, 
   Github, 
   Twitter, 
-  Linkedin, 
   Calendar, 
   ArrowRight, 
   ExternalLink,
@@ -421,7 +419,7 @@ export default function CommunityPage() {
               <TabsContent value="recent">
                 <div className="flex items-center justify-center py-12">
                   <div className="text-center space-y-2">
-                    <p className="text-muted-foreground">Select the "Popular" tab to view discussions</p>
+                    <p className="text-muted-foreground">Select the Popular tab to view discussions</p>
                     <p className="text-sm text-muted-foreground">This is a demo page</p>
                   </div>
                 </div>
@@ -430,7 +428,7 @@ export default function CommunityPage() {
               <TabsContent value="unanswered">
                 <div className="flex items-center justify-center py-12">
                   <div className="text-center space-y-2">
-                    <p className="text-muted-foreground">Select the "Popular" tab to view discussions</p>
+                    <p className="text-muted-foreground">Select the Popular tab to view discussions</p>
                     <p className="text-sm text-muted-foreground">This is a demo page</p>
                   </div>
                 </div>
@@ -484,7 +482,7 @@ export default function CommunityPage() {
               <div className="md:w-1/2 space-y-4">
                 <h2 className="text-3xl font-bold tracking-tight">Join Our Community Today</h2>
                 <p className="text-muted-foreground">
-                  Connect with thousands of developers, share your knowledge, and grow together. Whether you're just starting out or an experienced developer, there's a place for you in our community.
+                  Connect with thousands of developers, share your knowledge, and grow together. Whether youre just starting out or an experienced developer, theres a place for you in our community.
                 </p>
               </div>
               <div className="md:w-1/2 flex flex-col sm:flex-row gap-4 w-full md:justify-end">

@@ -42,6 +42,7 @@ export function ProductFeed() {
 
   useEffect(() => {
     fetchProducts()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTag, searchParams.get("sort")])
 
   useEffect(() => {

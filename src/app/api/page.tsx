@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { Code, FileCode, Copy, CheckCircle, Server, Lock, Globe, Database, AlertCircle } from "lucide-react"
+import { Code, Copy, CheckCircle, Server, Lock, Globe, AlertCircle } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -51,7 +51,7 @@ export default function APIPage() {
                 API Reference
               </h1>
               <p className="text-xl text-muted-foreground max-w-[700px]">
-                Integrate DevHunt's powerful features into your applications with our robust API.
+                Integrate DevHunts powerful features into your applications with our robust API.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-2">
                 <Button asChild>
@@ -295,7 +295,7 @@ export default function APIPage() {
                                 <div className="text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 rounded px-2 py-1">GET</div>
                                 <CardTitle>/users/:username</CardTitle>
                               </div>
-                              <CardDescription>Get a user's profile</CardDescription>
+                              <CardDescription>Get a users profile</CardDescription>
                             </div>
                           </div>
                         </CardHeader>

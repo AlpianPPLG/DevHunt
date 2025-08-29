@@ -184,7 +184,7 @@ export async function POST(
 // DELETE - Remove media
 export async function DELETE(
   request: Request,
-  { params }: RouteParams
+  { }: RouteParams
 ) {
   try {
     const user = await getCurrentUser()

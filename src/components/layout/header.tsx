@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
@@ -18,7 +17,6 @@ import type { User as UserType } from "@/lib/auth"
 export function Header() {
   const [user, setUser] = useState<UserType | null>(null)
   const [isLoading, setIsLoading] = useState(true)
-  const router = useRouter()
 
   useEffect(() => {
     fetchUser()
@@ -55,7 +53,7 @@ export function Header() {
         <div className="flex items-center gap-6">
           <Link href={user ? "/dashboard" : "/"} className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-              <Search className="h-4 w-4 text-primary-foreground" />
+              <Search suppressHydrationWarning className="h-4 w-4 text-primary-foreground" />
             </div>
             <span className="font-bold text-xl">DevHunt</span>
           </Link>

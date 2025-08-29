@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from "next/server"
 import { z } from "zod"
 import { getCurrentUser } from "@/lib/auth"
@@ -7,12 +8,6 @@ const CreateCollectionSchema = z.object({
   name: z.string().min(1).max(100),
   description: z.string().max(1000).optional(),
   is_public: z.boolean().default(true)
-})
-
-const UpdateCollectionSchema = z.object({
-  name: z.string().min(1).max(100).optional(),
-  description: z.string().max(1000).optional(),
-  is_public: z.boolean().optional()
 })
 
 // Generate URL-friendly slug

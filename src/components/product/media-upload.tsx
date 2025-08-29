@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { useState } from "react"
@@ -7,10 +8,10 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Plus, Image as ImageIcon, Video, FileVideo, FileImage, Info } from "lucide-react"
+import { Plus, Image as ImageIcon, Video, FileImage, Info } from "lucide-react"
 import { toast } from "sonner"
 import { cn } from "@/lib/utils"
-import { getUrlHelpMessage, isDirectImageUrl, extractDomain } from "@/lib/utils"
+import { getUrlHelpMessage, extractDomain } from "@/lib/utils"
 
 interface MediaUploadProps {
   productId: string
@@ -145,21 +146,6 @@ export function MediaUpload({
     }
   }
 
-  const getMediaTypeIcon = (type: string) => {
-    switch (type) {
-      case "image":
-        return <ImageIcon className="h-4 w-4" />
-      case "video":
-        return <Video className="h-4 w-4" />
-      case "gif":
-        return <FileImage className="h-4 w-4" />
-      case "logo":
-        return <FileImage className="h-4 w-4" />
-      default:
-        return <ImageIcon className="h-4 w-4" />
-    }
-  }
-
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
@@ -243,14 +229,14 @@ export function MediaUpload({
                   <span className="font-medium text-yellow-800">⚠️ Pinterest Page URL Detected</span>
                 </div>
                 <p className="text-sm text-yellow-700 mb-2">
-                  You've entered a Pinterest page link, but we need the direct image URL.
+                  Youve entered a Pinterest page link, but we need the direct image URL.
                 </p>
                 <div className="text-xs text-yellow-600">
                   <strong>How to get the direct image URL:</strong>
                   <ol className="list-decimal list-inside mt-1 space-y-1">
                     <li>Go to the Pinterest page: <a href={formData.media_url} target="_blank" rel="noopener noreferrer" className="underline hover:text-yellow-800">{formData.media_url}</a></li>
                     <li>Right-click on the image you want to use</li>
-                    <li>Select "Copy image address" or "Copy image URL"</li>
+                    <li>Select Copy image address or Copy image URL</li>
                     <li>Paste the copied URL here</li>
                   </ol>
                 </div>
@@ -280,7 +266,7 @@ export function MediaUpload({
                     <ol className="list-decimal list-inside mt-1 space-y-1">
                       <li>Go to the Pinterest pin page</li>
                       <li>Right-click on the image</li>
-                      <li>Select "Copy image address" or "Copy image URL"</li>
+                      <li>Select Copy image address or Copy image URL</li>
                       <li>Paste the copied URL here</li>
                     </ol>
                     <p className="mt-2 text-blue-700">

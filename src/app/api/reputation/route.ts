@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from "next/server"
 import { getCurrentUser } from "@/lib/auth"
 import { queryRows, queryRow, executeQuery } from "@/lib/database"
@@ -323,6 +324,7 @@ async function calculateUserReputation(userId: string, action?: string) {
   await checkAchievements(userId, stats, action)
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function checkAchievements(userId: string, stats: any, action?: string) {
   const existingAchievements = await queryRows(
     "SELECT achievement_type FROM user_achievements WHERE user_id = ?",

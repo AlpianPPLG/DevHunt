@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { useState, useEffect } from "react"
@@ -41,6 +42,7 @@ export function MediaGallery({
 
   useEffect(() => {
     fetchMedia()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId])
 
   const fetchMedia = async () => {
