@@ -1,24 +1,76 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { 
+import {
   TrendingUp, 
   Target,
   Award,
   Download,
-  Share2,
-  Filter
+  FileSpreadsheet
 } from "lucide-react"
 import { UserAnalyticsDashboard } from "@/components/analytics/user-analytics-dashboard"
+import { AnalyticsFilter, type AnalyticsFilterOptions } from "@/components/analytics/analytics-filter"
+import { ActiveFilters } from "@/components/analytics/active-filters"
+import { ShareAnalyticsDialog } from "@/components/analytics/share-analytics-dialog"
 import { useAuth } from "@/lib/hooks/use-auth"
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu"
+import { exportAnalyticsToCSV, exportAnalyticsToExcel } from "@/lib/export-utils"
 
 export default function AnalyticsPage() {
   const { user } = useAuth()
   const [timeRange, setTimeRange] = useState<"7d" | "30d" | "90d">("30d")
-  const [] = useState(false)
+  const [filterOptions, setFilterOptions] = useState<AnalyticsFilterOptions>({
+    dateRange: "30d",
+    sortBy: "performance",
+    showOnlyActive: false,
+    includedMetrics: ["views", "votes", "comments", "engagement"]
+  })
+  const analyticsDataRef = useRef<any>(null)
+  
+  // Update time range when filter changes
+  useEffect(() => {
+    setTimeRange(filterOptions.dateRange as "7d" | "30d" | "90d")
+  }, [filterOptions.dateRange])
+
+  const handleFilterChange = (newOptions: AnalyticsFilterOptions) => {
+    setFilterOptions(newOptions)
+  }
+  
+  const handleRemoveFilter = (key: keyof AnalyticsFilterOptions | 'all', value?: any) => {
+    if (key === 'all') {
+      // Reset to defaults
+      setFilterOptions({
+        dateRange: "30d",
+        sortBy: "performance",
+        showOnlyActive: false,
+        includedMetrics: ["views", "votes", "comments", "engagement"]
+      })
+      return
+    }
+    
+    setFilterOptions(prev => {
+      const updated = { ...prev }
+      
+      if (key === 'includedMetrics' && value) {
+        updated[key] = value
+      } else if (key === 'showOnlyActive') {
+        updated[key] = false
+      } else {
+        // @ts-ignore: Delete the property
+        delete updated[key]
+      }
+      
+      return updated
+    })
+  }
 
   if (!user) {
     return (
@@ -46,20 +98,57 @@ export default function AnalyticsPage() {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <Button variant="outline" size="sm">
-              <Filter className="h-4 w-4 mr-2" />
-              Filter
-            </Button>
-            <Button variant="outline" size="sm">
-              <Download className="h-4 w-4 mr-2" />
-              Export
-            </Button>
-            <Button variant="outline" size="sm">
-              <Share2 className="h-4 w-4 mr-2" />
-              Share
-            </Button>
+            <AnalyticsFilter 
+              options={filterOptions}
+              onChange={handleFilterChange}
+            />
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm">
+                  <Download className="h-4 w-4 mr-2" />
+                  Export
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => {
+                  if (analyticsDataRef.current) {
+                    exportAnalyticsToCSV(
+                      analyticsDataRef.current, 
+                      `devhunt-analytics-${timeRange}-${user?.username || 'user'}`
+                    )
+                  }
+                }}>
+                  <Download className="h-4 w-4 mr-2" />
+                  Export as CSV
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => {
+                  if (analyticsDataRef.current) {
+                    exportAnalyticsToExcel(
+                      analyticsDataRef.current, 
+                      `devhunt-analytics-${timeRange}-${user?.username || 'user'}`
+                    )
+                  }
+                }}>
+                  <FileSpreadsheet className="h-4 w-4 mr-2" />
+                  Export as Excel
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <ShareAnalyticsDialog
+              username={user.username}
+              timeRange={timeRange}
+              filterOptions={filterOptions}
+              analyticsData={analyticsDataRef.current}
+            />
+
           </div>
         </div>
+        
+        {/* Display active filters */}
+        <ActiveFilters 
+          options={filterOptions} 
+          onRemove={handleRemoveFilter} 
+        />
 
         {/* Time Range Selector */}
         <div className="flex items-center gap-2">
@@ -92,6 +181,9 @@ export default function AnalyticsPage() {
       <UserAnalyticsDashboard 
         username={user.username} 
         className="mb-8"
+        timeRange={timeRange}
+        filterOptions={filterOptions}
+        onDataLoad={(data) => { analyticsDataRef.current = data }}
       />
 
       {/* Additional Insights */}

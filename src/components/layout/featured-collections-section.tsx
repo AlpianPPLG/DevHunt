@@ -45,7 +45,7 @@ export function FeaturedCollectionsSection() {
   ])
 
   return (
-    <section className="py-16 bg-accent/10">
+    <section id="collections" className="py-16 bg-accent/10">
       <div className="container">
         <div className="flex items-center justify-between mb-10">
           <div>

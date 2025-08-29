@@ -66,16 +66,6 @@ export function FAQSection() {
             ))}
           </Accordion>
         </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-muted-foreground mb-2">Still have questions?</p>
-          <a 
-            href="/contact" 
-            className="text-primary hover:underline font-medium"
-          >
-            Contact us
-          </a>
-        </div>
       </div>
     </section>
   )

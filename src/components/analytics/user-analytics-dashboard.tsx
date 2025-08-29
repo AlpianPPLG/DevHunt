@@ -20,6 +20,7 @@ import {
   Clock
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import type { AnalyticsFilterOptions } from "./analytics-filter"
 
 interface AnalyticsData {
   user: {
@@ -90,30 +91,74 @@ interface AnalyticsData {
 interface UserAnalyticsDashboardProps {
   username: string
   className?: string
+  timeRange?: "7d" | "30d" | "90d"
+  filterOptions?: AnalyticsFilterOptions
+  onDataLoad?: (data: AnalyticsData) => void
 }
 
-export function UserAnalyticsDashboard({ username, className }: UserAnalyticsDashboardProps) {
+export function UserAnalyticsDashboard({ 
+  username, 
+  className,
+  timeRange = "30d",
+  filterOptions,
+  onDataLoad
+}: UserAnalyticsDashboardProps) {
   const [analytics, setAnalytics] = useState<AnalyticsData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState("")
-  const [timeRange, setTimeRange] = useState<"7d" | "30d" | "90d">("30d")
+  const [localTimeRange, setLocalTimeRange] = useState<"7d" | "30d" | "90d">(timeRange)
 
   useEffect(() => {
     fetchAnalytics()
-  }, [username, timeRange])
+  }, [username, localTimeRange, filterOptions])
+  
+  // Sync with parent timeRange
+  useEffect(() => {
+    setLocalTimeRange(timeRange)
+  }, [timeRange])
 
   const fetchAnalytics = async () => {
     try {
       setIsLoading(true)
       setError("")
       
-      const response = await fetch(`/api/users/${username}/analytics`)
+      // Build query string with filter parameters
+      const queryParams = new URLSearchParams()
+      queryParams.append('timeRange', localTimeRange)
+      
+      if (filterOptions) {
+        if (filterOptions.productCategory) {
+          queryParams.append('category', filterOptions.productCategory)
+        }
+        if (filterOptions.minViews) {
+          queryParams.append('minViews', filterOptions.minViews.toString())
+        }
+        if (filterOptions.minVotes) {
+          queryParams.append('minVotes', filterOptions.minVotes.toString())
+        }
+        if (filterOptions.minComments) {
+          queryParams.append('minComments', filterOptions.minComments.toString())
+        }
+        if (filterOptions.sortBy) {
+          queryParams.append('sortBy', filterOptions.sortBy)
+        }
+        if (filterOptions.showOnlyActive) {
+          queryParams.append('activeOnly', 'true')
+        }
+      }
+      
+      const url = `/api/users/${username}/analytics${queryParams.toString() ? `?${queryParams.toString()}` : ''}`
+      const response = await fetch(url)
+      
       if (!response.ok) {
         throw new Error("Failed to fetch analytics")
       }
       
       const data = await response.json()
       setAnalytics(data)
+      if (onDataLoad) {
+        onDataLoad(data)
+      }
     } catch (error) {
       setError(error instanceof Error ? error.message : "Failed to load analytics")
     } finally {
@@ -182,23 +227,23 @@ export function UserAnalyticsDashboard({ username, className }: UserAnalyticsDas
         </div>
         <div className="flex items-center gap-2">
           <Button
-            variant={timeRange === "7d" ? "default" : "outline"}
+            variant={localTimeRange === "7d" ? "default" : "outline"}
             size="sm"
-            onClick={() => setTimeRange("7d")}
+            onClick={() => setLocalTimeRange("7d")}
           >
             7D
           </Button>
           <Button
-            variant={timeRange === "30d" ? "default" : "outline"}
+            variant={localTimeRange === "30d" ? "default" : "outline"}
             size="sm"
-            onClick={() => setTimeRange("30d")}
+            onClick={() => setLocalTimeRange("30d")}
           >
             30D
           </Button>
           <Button
-            variant={timeRange === "90d" ? "default" : "outline"}
+            variant={localTimeRange === "90d" ? "default" : "outline"}
             size="sm"
-            onClick={() => setTimeRange("90d")}
+            onClick={() => setLocalTimeRange("90d")}
           >
             90D
           </Button>

@@ -10,6 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { TagBadge } from "./tag-badge"
 import { ThumbnailImage } from "./thumbnail-image"
+import { VoteButtons } from "./vote-buttons"
 import { ChevronUp, ExternalLink, MessageCircle, Loader2, TrendingUp, Flame } from "lucide-react"
 import { formatDistanceToNow } from "date-fns"
 
@@ -25,6 +26,8 @@ interface Product {
   submitter_username: string
   submitter_avatar?: string
   vote_count: number
+  upvote_count?: number
+  downvote_count?: number
   tags: Array<{ id: number; name: string }>
   trending_indicators?: {
     recent_votes_24h: number
@@ -41,6 +44,8 @@ interface ProductCardProps {
   isVoted?: boolean
   isVoting?: boolean
   currentVoteCount?: number
+  currentUpvoteCount?: number
+  currentDownvoteCount?: number
 }
 
 export function ProductCard({
@@ -49,6 +54,8 @@ export function ProductCard({
   isVoted = false,
   isVoting = false,
   currentVoteCount,
+  currentUpvoteCount,
+  currentDownvoteCount,
 }: ProductCardProps) {
   const [isVotingLocal, setIsVotingLocal] = useState(false)
   const [localVoteCount, setLocalVoteCount] = useState(currentVoteCount || 0)
@@ -68,31 +75,27 @@ export function ProductCard({
   const isHot = localVoteCount >= 100
   const isTrending = localVoteCount >= 50
 
+  // Calculate or use provided upvote and downvote counts
+  const upvoteCount = currentUpvoteCount !== undefined
+    ? currentUpvoteCount
+    : product.upvote_count !== undefined
+      ? product.upvote_count
+      : product.vote_count
+      
+  const downvoteCount = currentDownvoteCount !== undefined
+    ? currentDownvoteCount
+    : product.downvote_count || 0
+
   return (
     <Card className="group hover:shadow-lg transition-all duration-200">
       <CardContent className="p-4">
         <div className="flex gap-4">
-          {/* Vote Button */}
-          <div className="flex flex-col items-center gap-1 min-w-[60px]">
-            <Button
-              variant={isVoted ? "default" : "outline"}
-              size="sm"
-              className={`h-12 w-12 rounded-lg flex flex-col gap-1 p-0 transition-all duration-200 ${
-                isVoted ? "bg-primary text-primary-foreground" : "hover:bg-primary/10"
-              }`}
-              onClick={handleVote}
-              disabled={isVoting}
-            >
-              {isVoting ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
-              ) : (
-                <>
-                  <ChevronUp className="h-4 w-4" />
-                  <span className="text-xs font-medium">{localVoteCount}</span>
-                </>
-              )}
-            </Button>
-          </div>
+          {/* Vote Buttons */}
+          <VoteButtons
+            productId={product.id}
+            initialUpvoteCount={upvoteCount}
+            initialDownvoteCount={downvoteCount}
+          />
 
           {/* Product Info */}
           <div className="flex-1 min-w-0">

@@ -59,6 +59,16 @@ export function Header() {
             </div>
             <span className="font-bold text-xl">DevHunt</span>
           </Link>
+          
+          <nav className="hidden md:flex items-center gap-6">
+            /
+            <Link 
+              href="/collections" 
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              Collections
+            </Link>
+          </nav>
         </div>
 
         <div className="flex items-center gap-4">

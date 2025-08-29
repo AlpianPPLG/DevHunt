@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 import { Header } from "@/components/layout/header"
-import { VoteButton } from "@/components/product/vote-button"
+import { VoteButtons } from "@/components/product/vote-buttons"
 import { CommentsSection } from "@/components/comments/comments-section"
 import { queryRow, queryRows } from "@/lib/database"
 import { Badge } from "@/components/ui/badge"
@@ -32,8 +32,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound()
   }
 
+  // Get vote counts - both upvotes and downvotes
+  const upvotes = await queryRow(
+    `SELECT COUNT(*) as count FROM votes 
+     WHERE product_id = ? AND vote_type = 'upvote'`,
+    [id]
+  )
+
+  const downvotes = await queryRow(
+    `SELECT COUNT(*) as count FROM votes 
+     WHERE product_id = ? AND vote_type = 'downvote'`,
+    [id]
+  )
+
   const tags = await queryRows(
-    `SELECT t.name 
+    `SELECT t.id, t.name 
      FROM tags t
      JOIN product_tags pt ON t.id = pt.tag_id
      WHERE pt.product_id = ?
@@ -75,7 +88,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <VoteButton productId={product.id} initialVoteCount={product.vote_count} />
+                  <VoteButtons 
+                    productId={product.id} 
+                    initialUpvoteCount={upvotes?.count || 0}
+                    initialDownvoteCount={downvotes?.count || 0} 
+                  />
 
                   <Button asChild>
                     <Link href={product.website_url} target="_blank" rel="noopener noreferrer">

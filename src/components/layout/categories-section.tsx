@@ -33,7 +33,7 @@ export function CategoriesSection() {
   ])
 
   return (
-    <section className="py-16 bg-background/50">
+    <section id="categories" className="py-16 bg-background/50">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-3">Browse Developer Tools by Category</h2>

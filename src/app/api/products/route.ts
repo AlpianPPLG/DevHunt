@@ -25,6 +25,8 @@ export async function GET(request: Request) {
         u.name as submitter_name,
         u.username as submitter_username,
         u.avatar_url as submitter_avatar,
+        SUM(CASE WHEN v.vote_type = 'upvote' THEN 1 ELSE 0 END) as upvote_count,
+        SUM(CASE WHEN v.vote_type = 'downvote' THEN 1 ELSE 0 END) as downvote_count,
         COUNT(v.user_id) as vote_count,
         COUNT(v_recent.user_id) as recent_votes_24h,
         COUNT(v_week.user_id) as recent_votes_7d,

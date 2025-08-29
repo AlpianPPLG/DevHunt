@@ -8,6 +8,11 @@ import { CategoriesSection } from "@/components/layout/categories-section"
 import { RecentActivitySection } from "@/components/layout/recent-activity-section"
 import { StatisticsSection } from "@/components/layout/statistics-section"
 import { FAQSection } from "@/components/layout/faq-section"
+import { AboutSection } from "@/components/layout/about-section"
+import { TeamSection } from "@/components/layout/team-section"
+import { TermsSection } from "@/components/layout/terms-section"
+import { PrivacySection } from "@/components/layout/privacy-section"
+import { ContactSection } from "@/components/layout/contact-section"
 import { Footer } from "@/components/layout/footer"
 
 export default function HomePage() {
@@ -34,12 +39,15 @@ export default function HomePage() {
             }
           >
             <LandingPreview />
+            <AboutSection />
             <HowItWorksSection />
             <FeaturedCollectionsSection />
             <CategoriesSection />
             <RecentActivitySection />
             <StatisticsSection />
+            <TeamSection />
             <FAQSection />
+            <ContactSection />
             <Footer />
           </Suspense>
         </section>

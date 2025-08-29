@@ -27,9 +27,8 @@ export function Footer() {
     {
       title: "Product",
       links: [
-        { title: "Features", href: "/features" },
-        { title: "Categories", href: "/categories" },
-        { title: "Collections", href: "/collections" },
+        { title: "Categories", href: "#categories" },
+        { title: "Collections", href: "#collections" },
         { title: "Submit a Tool", href: "/submit" },
       ]
     },
@@ -37,7 +36,7 @@ export function Footer() {
       title: "Resources",
       links: [
         { title: "Documentation", href: "/docs" },
-        { title: "API", href: "/api-docs" },
+        { title: "API", href: "/api" },
         { title: "Blog", href: "/blog" },
         { title: "Community", href: "/community" },
       ]
@@ -45,10 +44,10 @@ export function Footer() {
     {
       title: "Company",
       links: [
-        { title: "About", href: "/about" },
-        { title: "Terms", href: "/terms" },
-        { title: "Privacy", href: "/privacy" },
-        { title: "Contact", href: "/contact" },
+        { title: "About", href: "#about" },
+        { title: "Terms", href: "#terms" },
+        { title: "Privacy", href: "#privacy" },
+        { title: "Contact", href: "#contact" },
       ]
     }
   ]
