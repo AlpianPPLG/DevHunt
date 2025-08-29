@@ -29,14 +29,6 @@ export default function DocumentationPage() {
               <p className="text-xl text-muted-foreground max-w-[700px]">
                 Everything you need to know about using DevHunt for discovering and sharing developer tools.
               </p>
-              <div className="relative w-full max-w-2xl mt-6">
-                <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder="Search documentation..."
-                  className="w-full rounded-lg border border-input bg-background py-3 pl-10 pr-4 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                />
-              </div>
             </div>
           </div>
         </section>
@@ -64,7 +56,7 @@ export default function DocumentationPage() {
                       <CardDescription>Learn what DevHunt is and how it can help you discover developer tools.</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <Link href="#" className="text-primary hover:underline inline-flex items-center gap-1">
+                      <Link href="/#about" className="text-primary hover:underline inline-flex items-center gap-1">
                         Read More <ArrowRight className="h-4 w-4" />
                       </Link>
                     </CardContent>
@@ -79,7 +71,7 @@ export default function DocumentationPage() {
                       <CardDescription>Get up and running with DevHunt in less than 5 minutes.</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <Link href="#" className="text-primary hover:underline inline-flex items-center gap-1">
+                      <Link href="/dashboard" className="text-primary hover:underline inline-flex items-center gap-1">
                         Read More <ArrowRight className="h-4 w-4" />
                       </Link>
                     </CardContent>
@@ -94,7 +86,7 @@ export default function DocumentationPage() {
                       <CardDescription>Understand the fundamental concepts behind DevHunt.</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <Link href="#" className="text-primary hover:underline inline-flex items-center gap-1">
+                      <Link href="/#how-it-works" className="text-primary hover:underline inline-flex items-center gap-1">
                         Read More <ArrowRight className="h-4 w-4" />
                       </Link>
                     </CardContent>

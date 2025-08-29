@@ -1,4 +1,3 @@
-// d:\Development\devhunt\src\components\layout\how-it-works-section.tsx
 import { 
   Search, ThumbsUp, PlusCircle, Share2
 } from "lucide-react"
@@ -28,7 +27,7 @@ export function HowItWorksSection() {
   ]
 
   return (
-    <section className="py-16 bg-accent/10">
+    <section id="how-it-works" className="py-16 bg-accent/10">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-3">How DevHunt Works</h2>

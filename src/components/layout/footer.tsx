@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Github, Twitter, Linkedin, Mail, Heart } from "lucide-react"
+import { Github, Linkedin, Mail, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
@@ -37,8 +37,8 @@ export function Footer() {
       links: [
         { title: "Documentation", href: "/docs" },
         { title: "API", href: "/api" },
-        { title: "Blog", href: "/blog" },
-        { title: "Community", href: "/community" },
+        { title: "Blog", href: "/blog" }
+        // { title: "Community", href: "/community" },
       ]
     },
     {

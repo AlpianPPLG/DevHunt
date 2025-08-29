@@ -551,9 +551,6 @@ const jsTools = await fetch(
                   <Button asChild>
                     <Link href="/api">API Reference</Link>
                   </Button>
-                  <Button variant="outline" asChild>
-                    <Link href="/dashboard/settings/api">Get API Key</Link>
-                  </Button>
                 </div>
               </div>
             </div>
