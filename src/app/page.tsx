@@ -40,12 +40,14 @@ export default function HomePage() {
           >
             <LandingPreview />
             <AboutSection />
+            <TeamSection />
             <HowItWorksSection />
             <FeaturedCollectionsSection />
             <CategoriesSection />
             <RecentActivitySection />
             <StatisticsSection />
-            <TeamSection />
+            <TermsSection />
+            <PrivacySection />
             <FAQSection />
             <ContactSection />
             <Footer />
