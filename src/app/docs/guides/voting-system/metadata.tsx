@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Understanding the Voting System - DevHunt",
-  description: "Learn how the voting system works on DevHunt and how it affects product discovery and trending algorithms.",
+  title: "Voting System Guide | DevHunt Documentation",
+  description: "Learn how DevHunt's voting system works and how to participate effectively in the community. Understand the impact of your votes.",
 }

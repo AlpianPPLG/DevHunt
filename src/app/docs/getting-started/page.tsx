@@ -3,35 +3,33 @@ import { DocPage } from "@/components/docs/doc-page"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
 import { 
+  Search, 
+  Upload, 
+  ThumbsUp, 
+  MessageCircle, 
+  Image, 
+  BarChart3, 
+  Palette,
   BookOpen,
   Rocket,
-  Settings,
-  Code,
-  Palette,
-  Search,
-  Upload,
-  ThumbsUp,
-  MessageCircle,
-  Image,
-  BarChart3
+  Settings
 } from "lucide-react"
 
-export default function DocsIndexPage() {
+export default function GettingStartedPage() {
   return (
     <DocPage
-      title="DevHunt Documentation"
-      description="Complete guide to using DevHunt - discover, share, and discuss developer tools."
+      title="Getting Started with DevHunt"
+      description="Learn how to get started with DevHunt and discover amazing developer tools."
     >
       <div className="space-y-8">
         <div className="space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">Documentation</h1>
-          <p className="text-lg text-muted-foreground">
-            Welcome to the DevHunt documentation. Here youll find everything you need to know about using our platform to discover, share, and discuss amazing developer tools.
+          <p className="text-lg">
+            Welcome to DevHunt! This guide will help you get started with discovering, sharing, and discussing amazing developer tools, libraries, and projects.
           </p>
         </div>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold tracking-tight">Getting Started</h2>
+          <h2 className="text-2xl font-bold tracking-tight">Quick Navigation</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="hover:shadow-md transition-shadow">
               <CardHeader>
@@ -185,47 +183,43 @@ export default function DocsIndexPage() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold tracking-tight">Developer Resources</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Code className="h-5 w-5 text-primary" />
-                  API Documentation
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Integrate DevHunt into your applications with our comprehensive API.
-                </p>
-                <Link 
-                  href="/docs/api" 
-                  className="text-primary hover:underline text-sm font-medium"
-                >
-                  View API Docs →
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Palette className="h-5 w-5 text-primary" />
-                  Component Library
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Learn about our reusable UI components and design system.
-                </p>
-                <Link 
-                  href="/docs/components" 
-                  className="text-primary hover:underline text-sm font-medium"
-                >
-                  Browse Components →
-                </Link>
-              </CardContent>
-            </Card>
+          <h2 className="text-2xl font-bold tracking-tight">How DevHunt Works</h2>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div className="text-center space-y-2">
+              <div className="mx-auto bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+                <Search className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-medium">Discover</h3>
+              <p className="text-sm text-muted-foreground">Browse trending tools</p>
+            </div>
+            <div className="text-center space-y-2">
+              <div className="mx-auto bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+                <ThumbsUp className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-medium">Engage</h3>
+              <p className="text-sm text-muted-foreground">Vote and comment</p>
+            </div>
+            <div className="text-center space-y-2">
+              <div className="mx-auto bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+                <Upload className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-medium">Submit</h3>
+              <p className="text-sm text-muted-foreground">Share your tools</p>
+            </div>
+            <div className="text-center space-y-2">
+              <div className="mx-auto bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+                <BarChart3 className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-medium">Track</h3>
+              <p className="text-sm text-muted-foreground">Monitor performance</p>
+            </div>
+            <div className="text-center space-y-2">
+              <div className="mx-auto bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+                <Palette className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-medium">Curate</h3>
+              <p className="text-sm text-muted-foreground">Create collections</p>
+            </div>
           </div>
         </section>
 
@@ -233,23 +227,41 @@ export default function DocsIndexPage() {
           <h2 className="text-2xl font-bold tracking-tight">Next Steps</h2>
           <div className="bg-muted/50 p-6 rounded-lg">
             <p className="mb-4">
-              Ready to get started? Begin with our getting started guide:
+              Ready to dive deeper? Choose your path:
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
-                href="/docs/getting-started"
+                href="/docs/getting-started/introduction"
                 className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
               >
-                Get Started
+                Read Introduction
               </Link>
               <Link 
-                href="/docs/faq"
+                href="/docs/getting-started/quick-start"
                 className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
               >
-                View FAQ
+                Quick Start Guide
               </Link>
             </div>
           </div>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold tracking-tight">Need Help?</h2>
+          <p>
+            If you need assistance or have questions:
+          </p>
+          <ul className="space-y-2">
+            <li>
+              • Check our <Link href="/docs/faq" className="text-primary hover:underline">FAQ section</Link>
+            </li>
+            <li>
+              • Contact our support team at support@devhunt.io
+            </li>
+            <li>
+              • Join our <a href="https://discord.gg/devhunt" className="text-primary hover:underline">Discord community</a> for real-time assistance
+            </li>
+          </ul>
         </section>
       </div>
     </DocPage>

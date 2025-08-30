@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Creating a Developer Profile - DevHunt",
-  description: "Learn how to create a compelling developer profile that highlights your expertise and contributions.",
+  title: "Developer Profiles Guide | DevHunt Documentation",
+  description: "Learn how to create and optimize your developer profile on DevHunt to showcase your skills, tools, and contributions to the community.",
 }
